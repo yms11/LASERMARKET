@@ -1065,33 +1065,26 @@ break;
           break;
       }
 
+      //재단비
       iCutCost = iMaterialPrice * material_count;
-   ; 
-      // alert("material_size_x : " + material_size_x +"\n"+
-      // "material_size_y : " + material_size_y + "\n"+
-      // "material_size_t : " + material_size_t + "\n"+
-      // "material_count : " + material_count + "\n"+
-      // "iWeighted : " + iWeighted + "\n"+
-      // "dSpecific_gravity : " + dSpecific_gravity + "\n"+ "\n"+
-      // "iStaticValue : " + iStaticValue + "\n");
+   
 
-
-      // material_size_x = parseInt(material_size_x) + iWeighted;
-      // material_size_y = parseInt(material_size_y) + iWeighted;
-
-
+  //자재XY 10의자리 올림 
       material_size_x = Math.ceil(material_size_x / 100) * 100;//
       material_size_y =  Math.ceil(material_size_y / 100) * 100;//
-    
+       //판재금액 
       iSalePrice = (material_size_x +iWeighted) * (material_size_y +iWeighted) * material_size_t * dSpecific_gravity * material_count / 1000000 * iStaticValue;
-  
+    
+      //판재금액 10의자리 올림
       iSalePrice= Math.ceil(iSalePrice/100) * 100;
    
-      //만원이상
-      if (iCutCost > 10000) {
-        iCutCost = 0;
+ 
+      //판재금액 기준 10000원 이상
+      if(iSalePrice >= 10000)
+      {
+
+        iCutCost = 0
       }
-    
 
       return iCutCost + iSalePrice;
     }
@@ -1178,11 +1171,6 @@ break;
       material_size_y = parseInt(material_size_y) + iWeighted;
       iSalePrice = material_size_x * material_size_y * material_size_t * dSpecific_gravity * material_count / 1000000 * iStaticValue;
 
-
-      //만원이상
-      if (iCutCost > 10000) {
-        iCutCost = 0;
-      }
 
 
     
