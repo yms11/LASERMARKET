@@ -237,6 +237,7 @@ button:hover:before,button:hover:after{
           font-size: 20px; 
           text-align: left;">
             <b>견적서</b>
+         
             </pre>
 
         <div class="my-box" style="border: 0px solid gold; float: left; width: 59%;">
@@ -244,7 +245,7 @@ button:hover:before,button:hover:after{
 
             <thead>
               <tr>
-                <th>공급자</th>
+                <th>공급자 </th>
               </tr>
               <tr>
                 <td> 등 록 번 호 : 533-06-01928 <br>
@@ -252,6 +253,7 @@ button:hover:before,button:hover:after{
                   <!-- 주 소 : 전북 김제시 백구면 석담4길 131-9 <br> -->
                   T.(063) 291 - 3000 F:214 - 3000 <br>
                   E -mail : lasermarket11@naver.com</td>
+               
               </tr>
 
             </thead>
@@ -299,7 +301,7 @@ button:hover:before,button:hover:after{
         <button style="margin: 5px; float: left;" type="button" id ="excelFileExport" >견적서 출력</button>
 
         <!-- 파일 내보내기(HTML TABLE) : <input type="button" id="excelFileExport" value="엑셀 파일 다운로드(TABLE) 사용불가 TEST" /> -->
-        <button style="margin: 5px; float: left;" type="button" onclick="window.open('https://smartstore.naver.com/lasermarket11/products/5351160682')">주문하러가기</button>
+        <button style="margin: 5px; float: left;" type="button" onclick="window.open('https://smartstore.naver.com/lasermarket11')">주문하러가기</button>
       
         
       </div>
@@ -1078,10 +1080,13 @@ break;
       // material_size_y = parseInt(material_size_y) + iWeighted;
 
 
-
+      material_size_x = Math.ceil(material_size_x / 100) * 100;//
+      material_size_y =  Math.ceil(material_size_y / 100) * 100;//
+    
       iSalePrice = (material_size_x +iWeighted) * (material_size_y +iWeighted) * material_size_t * dSpecific_gravity * material_count / 1000000 * iStaticValue;
+  
+      iSalePrice= Math.ceil(iSalePrice/100) * 100;
    
-      //alert('iSalePrice'+iSalePrice);
       //만원이상
       if (iCutCost > 10000) {
         iCutCost = 0;
