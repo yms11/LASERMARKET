@@ -992,8 +992,8 @@ button:hover:before,button:hover:after{
       var iStaticValue = 0; // 고정금액
       var iWeighted = 0; //가로,세로 가중치
 
-
-      switch (material_type) {
+      alert(material_type.trim());
+      switch (material_type.trim()) {
         case 'SS400':
           iMaterialPrice = 3000;
           iStaticValue = 2000;
@@ -1037,11 +1037,11 @@ button:hover:before,button:hover:after{
           dSpecific_gravity = 7.93;
           break;
         case 'AL':
-          break;
           iMaterialPrice = 1000;
           iStaticValue = 34000;
           iWeighted = 20;
           dSpecific_gravity = 2.75;
+          break;
         case 'AL-CK':
           iMaterialPrice = 1000;
           iStaticValue = 40000;
@@ -1065,12 +1065,12 @@ button:hover:before,button:hover:after{
       material_size_y = parseInt(material_size_y) + iWeighted;
       iSalePrice = material_size_x * material_size_y * material_size_t * dSpecific_gravity * material_count / 1000000 * iStaticValue;
    
-
+      
       //만원이상
       if (iCutCost > 10000) {
         iCutCost = 0;
       }
-
+    
 
       return iCutCost + iSalePrice;
     }
@@ -1085,7 +1085,7 @@ button:hover:before,button:hover:after{
       var iWeighted = 0; //가로,세로 가중치
 
 
-      switch (material_type) {
+      switch (material_type.trim()) {
         case 'SS400':
           iMaterialPrice = 3000;
           iStaticValue = 2000;
@@ -1131,12 +1131,12 @@ button:hover:before,button:hover:after{
         case 'AL':
           break;
           iMaterialPrice = 1000;
-          iStaticValue = 34000;
+          iStaticValue = 23000;
           iWeighted = 20;
           dSpecific_gravity = 2.75;
         case 'AL-CK':
           iMaterialPrice = 1000;
-          iStaticValue = 40000;
+          iStaticValue = 21000;
           iWeighted = 20;
           dSpecific_gravity = 2.75;
           break;
@@ -1164,6 +1164,7 @@ button:hover:before,button:hover:after{
       }
 
 
+    
       return iCutCost + iSalePrice;
     }
 
