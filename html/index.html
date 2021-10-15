@@ -148,6 +148,7 @@ button:hover:before,button:hover:after{
             <option value="SS400">SS400</option>
             <option value="ATOS80">ATOS80(ATOS780)</option>
             <option value="S45C">S45C</option>
+            <option value="SM490A">SM490A</option>
             <option value="SUS-1D">SUS-1D</option>
             <option value="SUS-2B">SUS-2B</option>
             <option value="SUS-HL">SUS-HL</option>
@@ -573,7 +574,8 @@ button:hover:before,button:hover:after{
             var_Thick += "<option value='4.5'>4.5</option>";
             var_Thick += "<option value='6'>6</option>";
             var_Thick += "<option value='9'>9</option>";
-
+            var_Thick += "<option value='12'>12</option>";
+            var_Thick += "<option value='16'>16</option>";
 
             break;
           case 'ATOS80':
@@ -588,8 +590,13 @@ button:hover:before,button:hover:after{
 
             break;
           case 'S45C':
-            var_Thick += "<option value='1.2'>1.2</option>";
+            var_Thick += "<option value='12'>12</option>";
             break;
+
+case 'SM490A':
+var_Thick += "<option value='19'>19</option>";
+break;
+
           case 'SUS-1D':
 
             var_Thick += "<option value='3'>3</option>";
@@ -1012,6 +1019,12 @@ button:hover:before,button:hover:after{
           iWeighted = 20;
           dSpecific_gravity = 7.85;
           break;
+          case 'SM490A':
+          iMaterialPrice = 3000;
+          iStaticValue = 3000;
+          iWeighted = 20;
+          dSpecific_gravity = 7.85;
+          break;
         case 'SUS-1D':
           iMaterialPrice = 1000;
           iStaticValue = 11900;
@@ -1038,13 +1051,13 @@ button:hover:before,button:hover:after{
           break;
         case 'AL':
           iMaterialPrice = 1000;
-          iStaticValue = 23000;
+          iStaticValue = 34000;
           iWeighted = 20;
           dSpecific_gravity = 2.75;
           break;
         case 'AL-CK':
           iMaterialPrice = 1000;
-          iStaticValue = 21000;
+          iStaticValue = 40000;
           iWeighted = 20;
           dSpecific_gravity = 2.75;
           break;
@@ -1061,11 +1074,14 @@ button:hover:before,button:hover:after{
       // "iStaticValue : " + iStaticValue + "\n");
 
 
-    //  material_size_x = parseInt(material_size_x) + iWeighted;
-     // material_size_y = parseInt(material_size_y) + iWeighted;
-      iSalePrice = ((material_size_x + iWeighted)  * (material_size_y + iWeighted)) * material_size_t * dSpecific_gravity * material_count / 1000000 * iStaticValue;
+      // material_size_x = parseInt(material_size_x) + iWeighted;
+      // material_size_y = parseInt(material_size_y) + iWeighted;
+
+
+
+      iSalePrice = (material_size_x +iWeighted) * (material_size_y +iWeighted) * material_size_t * dSpecific_gravity * material_count / 1000000 * iStaticValue;
    
-      
+      alert('iSalePrice'+iSalePrice);
       //만원이상
       if (iCutCost > 10000) {
         iCutCost = 0;
@@ -1228,6 +1244,7 @@ button:hover:before,button:hover:after{
         "<option value='SS400'> SS400</option>" +
         "<option value='ATOS80'>ATOS80</option>" +
         "<option value='S45C'>S45C</option>" +
+        "<option value='SM490A'>SM490A</option>" +
         "<option value='SUS-1D'>SUS-1D</option>" +
         "<option value='SUS-2B'>SUS-2B</option>" +
         "<option value='SUS-HL'>SUS-HL</option>" +
