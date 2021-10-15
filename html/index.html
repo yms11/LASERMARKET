@@ -1061,9 +1061,9 @@ button:hover:before,button:hover:after{
       // "iStaticValue : " + iStaticValue + "\n");
 
 
-      material_size_x = parseInt(material_size_x) + iWeighted;
-      material_size_y = parseInt(material_size_y) + iWeighted;
-      iSalePrice = material_size_x * material_size_y * material_size_t * dSpecific_gravity * material_count / 1000000 * iStaticValue;
+    //  material_size_x = parseInt(material_size_x) + iWeighted;
+     // material_size_y = parseInt(material_size_y) + iWeighted;
+      iSalePrice = (material_size_x + iWeighted)  * (material_size_y + iWeighted) * material_size_t * dSpecific_gravity * material_count / 1000000 * iStaticValue;
    
       
       //만원이상
