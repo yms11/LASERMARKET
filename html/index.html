@@ -81,6 +81,63 @@
     .calculator-status{font-size:12px;font-weight:700;color:#66809e;margin:9px 0 0}.calculator-status.is-ready{color:#176d50}.calculator-status.is-error{color:#b4213e}.form-success{color:#156d43;font-size:12px;font-weight:800;min-height:18px;margin:8px 0 0}
     @media(max-width:530px){.draft-panel{margin:14px 14px 0;padding:14px}.draft-content{align-items:flex-start;flex-direction:column;gap:2px}.draft-money{font-size:25px}}
     .material-caution {font-weight:700; color:#0b2b54; margin-top:10px;}
+
+    /* '02. 실시간 견적서' 제목의 오른쪽에 공급자 정보를 배치합니다. */
+    .result-header{display:grid;grid-template-columns:minmax(0,1fr) minmax(254px,.98fr);align-items:start;gap:20px;padding:23px 24px}
+    .result-title-left{display:flex;align-items:center;gap:11px;min-width:0;padding-top:6px}
+    .result-title-left h3{font-size:19px}
+    .result-header .supplier-card{display:block;min-width:0;margin:0;padding:14px 16px;background:#f8fbff;border:1px solid #dae7f7;border-radius:12px}
+    .result-header .supplier-heading{font-weight:900;font-size:14px;color:#0b3c78;padding:0 0 7px;border-bottom:1px solid #e0eafa;margin-bottom:8px}
+    .result-header .supplier-detail{display:flex;flex-direction:column;gap:4px;font-size:11.5px;line-height:1.46;color:#314765}
+    .result-header .supplier-detail .label{font-size:10.5px;color:#7488a1;display:inline-block;min-width:39px;font-weight:700;margin-right:3px}
+    .result-header .supplier-detail .supplier-email{overflow-wrap:anywhere}
+    /* 아래의 실시간 예상 금액은 전체 너비를 사용하며 공급자 정보와 나란히 놓지 않습니다. */
+    .quote-top-row{display:block;padding:18px 24px 0}
+    .quote-top-row .draft-panel{margin:0;padding:17px 18px;min-width:0}
+    .quote-top-row .draft-content{display:flex;flex-direction:row;align-items:center;justify-content:space-between}
+    .quote-top-row + .added-alert{margin-top:12px}
+    @media(min-width:901px) and (max-width:1190px){
+      .result-header{grid-template-columns:1fr;gap:12px}
+      .result-header .supplier-detail{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+      .result-header .supplier-detail .supplier-email{grid-column:1/-1}
+    }
+    @media(max-width:650px){
+      .result-header{grid-template-columns:1fr;gap:14px;padding:18px 16px}
+      .result-title-left{padding:0}
+      .result-header .supplier-card{padding:14px 15px}
+      .quote-top-row{padding:14px 14px 0}
+      .quote-top-row .draft-panel{padding:15px}
+    }
+    @media(max-width:420px){.quote-top-row .draft-content{flex-direction:column;align-items:flex-start;gap:4px}}
+
+    /* R6: 견적서 제목을 먼저 보여 주고, 공급자는 오른쪽의 얇은 정보 영역으로 간결하게 배치 */
+    .result-header{display:grid;grid-template-columns:minmax(0,1fr) minmax(295px,1.32fr);align-items:center;gap:14px;padding:19px 23px}
+    .result-title-left{align-items:center;padding:0;gap:10px}
+    .result-title-left h3{font-size:18px;white-space:nowrap}
+    .result-header .supplier-card{display:block;margin:0;min-width:0;padding:2px 0 2px 16px;background:transparent;border:0;border-left:2px solid #d4e5fa;border-radius:0}
+    .result-header .supplier-primary{display:flex;align-items:center;gap:10px;margin-bottom:6px;min-width:0}
+    .result-header .supplier-heading{display:inline-block;flex:0 0 auto;border:0;margin:0;padding:2px 7px;border-radius:5px;background:#e9f3ff;color:#1355a0;font-size:11px;line-height:1.5}
+    .result-header .supplier-name{color:#18385e;font-weight:800;font-size:12.5px;white-space:nowrap}
+    .result-header .supplier-name b{margin-left:7px;font-weight:650;color:#526984;font-size:11.5px}
+    .result-header .supplier-detail{display:grid;grid-template-columns:1fr 1fr;gap:2px 10px;font-size:11.5px;line-height:1.5;color:#324766}
+    .result-header .supplier-detail>div{display:flex;align-items:baseline;gap:5px;min-width:0}
+    .result-header .supplier-detail .label{flex:0 0 auto;min-width:0;display:inline;font-size:10.5px;font-weight:700;color:#788ba5;margin:0}
+    .result-header .supplier-detail .supplier-email{grid-column:1/-1;white-space:nowrap;overflow-wrap:normal}
+    .result-header .supplier-detail .supplier-email>span:last-child{overflow-wrap:anywhere;white-space:normal}
+    @media (max-width:1190px){
+      .result-header{grid-template-columns:1fr;align-items:start;gap:11px}
+      .result-header .supplier-card{padding-left:12px;margin-left:48px}
+      .result-header .supplier-detail{grid-template-columns:1fr 1fr}
+      .result-header .supplier-detail .supplier-email{grid-column:1/-1}
+    }
+    @media (max-width:650px){
+      .result-header{padding:17px 16px 13px;gap:12px}
+      .result-header .supplier-card{margin-left:0;border-left:0;border-top:1px solid #e3ebf5;padding:10px 0 0}
+      .result-header .supplier-primary{margin-bottom:5px}
+      .result-header .supplier-detail{grid-template-columns:1fr 1fr;gap:3px 8px;font-size:11px}
+      .result-header .supplier-detail .supplier-email{grid-column:1/-1}
+      .result-title-left h3{font-size:17px}
+    }
   </style>
 </head>
 <body>
@@ -104,7 +161,7 @@
   <main class="wrap">
     <div class="intro">
       <div><h2>제작 금액을 간편하게 확인하세요.</h2><p>재질과 규격을 입력하면 예상 금액을 바로 확인할 수 있습니다. 버튼을 누르면 견적서에 추가됩니다.</p></div>
-      <span class="updated">모든 금액은 원(₩) 기준 · 업데이트 2026.11.25-R3</span>
+      <span class="updated">모든 금액은 원(₩) 기준 · 업데이트 2026.11.25-R6</span>
     </div>
     <div class="columns">
       <section class="card" aria-labelledby="form-title">
@@ -128,23 +185,27 @@
         </form>
       </section>
       <section class="card" aria-labelledby="result-title" id="results">
-        <div class="card-head"><span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3h11v18H5V6l3-3Zm0 0v4H5M9 11h7m-7 4h7m-7 4h4"/></svg></span><div><h3 id="result-title">02. 실시간 견적서 <span id="added-count" class="added-count">0건</span></h3><p>견적 항목과 총 결제금액을 한눈에 확인하세요.</p></div></div>
+        <div class="card-head result-header">
+          <div class="result-title-left"><span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3h11v18H5V6l3-3Zm0 0v4H5M9 11h7m-7 4h7m-7 4h4"/></svg></span><div><h3 id="result-title">02. 실시간 견적서 <span id="added-count" class="added-count">0건</span></h3><p>견적 항목과 총 결제금액을 한눈에 확인하세요.</p></div></div>
+          <section class="supplier-card" aria-label="견적서 공급자 정보">
+            <div class="supplier-primary"><strong class="supplier-heading">공급자</strong><span class="supplier-name">레이저 마켓 <b>조민영</b></span></div>
+            <div class="supplier-detail">
+              <div><span class="label">등록번호</span><span>533-06-01928</span></div>
+              <div><span class="label">전화</span><span>(063) 291 - 3000</span></div>
+              <div><span class="label">팩스</span><span>214 - 3000</span></div>
+              <div class="supplier-email"><span class="label">이메일</span><span>lasermarket11@gmail.com</span></div>
+            </div>
+          </section>
+        </div>
+        <div class="quote-top-row" aria-label="입력 중인 제품 실시간 예상 견적">
         <section id="draft-panel" class="draft-panel" aria-live="polite" aria-label="입력 중인 견적 실시간 미리보기">
           <div class="draft-heading"><strong>입력 중인 제품 · 실시간 예상 금액</strong><span>견적서 추가 전 미리보기</span></div>
           <div class="draft-content"><p id="draft-caption" class="draft-caption">왼쪽에서 재질과 규격을 입력하면 즉시 계산됩니다.</p><strong id="draft-money" class="draft-money">—</strong></div>
           <p id="draft-hint" class="draft-hint">최종 견적서에 넣으려면 ‘견적 계산 후 항목 추가’를 눌러 주세요.</p>
         </section>
+
+        </div>
         <div id="added-alert" class="added-alert" role="status" aria-live="polite"></div>
-        <section class="supplier-card" aria-label="견적서 공급자 정보">
-          <div class="supplier-heading">공급자</div>
-          <div class="supplier-detail">
-            <div><span class="label">등록번호</span> 533-06-01928</div>
-            <div><span class="label">상호</span> 레이저 마켓 <span class="label" style="margin-left:7px">성명</span> 조민영</div>
-            <div><span class="label">전화</span> (063) 291 - 3000</div>
-            <div><span class="label">팩스</span> 214 - 3000</div>
-            <div class="supplier-email"><span class="label">이메일</span> lasermarket11@gmail.com</div>
-          </div>
-        </section>
         <div class="result-stats" aria-live="polite">
           <div class="stat"><small>총 예상 견적금액</small><strong id="total-price">0<span class="unit">원</span></strong></div>
           <div class="stat"><small>실제 제작 수량</small><strong id="total-count">0<span class="unit">개</span></strong></div>
@@ -164,7 +225,7 @@
   <section id="print-quote" aria-label="견적서 출력용"><h2>레이저 마켓 견적서</h2><div class="print-meta">발행일: <span id="print-date"></span></div><div class="supplier-print"><div class="supplier-print-name">공급자</div><div class="supplier-print-detail">등 록 번 호 : 533-06-01928<br>상 호 : 레이저 마켓&nbsp;&nbsp; 성명 : 조민영<br>T.(063) 291 - 3000 &nbsp; F:214 - 3000<br>E-mail : lasermarket11@gmail.com</div></div><table><thead><tr><th>No</th><th>재질/두께</th><th>규격(mm)</th><th>수량</th><th>단가</th><th>공급가액</th><th>네이버 주문 수량</th></tr></thead><tbody id="print-rows"></tbody></table><div class="print-total" id="print-total"></div><p class="print-meta">본 견적은 사각 절단 예상 금액이며 배송비 및 추가 가공 등은 별도입니다. 실제 제작 조건에 따라 금액이 변경될 수 있습니다.</p></section>
 <script>
   'use strict';
-  const APP_VERSION='2026.11.25-R3';
+  const APP_VERSION='2026.11.25-R6';
   // 로딩 및 스크립트 오류를 눈에 보이게 표시합니다.
   window.addEventListener('error', function (ev) {
     const el=document.getElementById('calculator-status');
