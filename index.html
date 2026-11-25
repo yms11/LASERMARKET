@@ -1,1407 +1,418 @@
-<!DOCTYPE html>
-<html lang="ko-KR">
-  
+<!doctype html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>레이저마켓 견적</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b2b54">
+  <meta name="description" content="레이저 마켓 사각 절단 셀프 견적. 재질, 두께, 규격, 제작 수량을 입력하여 예상 제작금액과 네이버 주문 수량을 확인하세요.">
+  <title>사각 절단 셀프 견적 알아보기 | 레이저 마켓</title>
   <style>
-    /* table,
-    td {
-      border: 1px solid black;
-    } */
-	/*구글 웹 폰트 적용*/
-	@import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
-
-	.jm-font{
-		font-family: 'Jeju Myeongjo', serif;/*웹 폰트 지정*/
-		color: orange;
-	}
-    table,
-    th,
-    td {
-      border: 1px solid black;
-      border-collapse: collapse;
+    :root { color-scheme: light; --navy:#0b2b54; --navy-deep:#071d3b; --blue:#1664d9; --sky:#eaf4ff; --pale:#f5f8fc; --ink:#14233a; --sub:#65758b; --line:#e2e8f2; --white:#fff; --green:#04c75a; --shadow:0 16px 44px rgba(17,52,94,.07); }
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{ margin:0; font-family:"Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif; color:var(--ink); background:var(--pale); line-height:1.55; word-break:keep-all; }
+    button,input,select{ font:inherit; }
+    button{ cursor:pointer; }
+    button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{ outline:3px solid #66aaff; outline-offset:2px; }
+    .wrap{ width:min(1280px,calc(100% - 48px)); margin:0 auto; }
+    .hero{ position:relative; overflow:hidden; background:radial-gradient(ellipse at 79% -15%,#235f9f 0,transparent 48%),linear-gradient(114deg,#071b36 0%,#0b2c54 69%,#164877 100%); color:#fff; }
+    .hero::after{ content:""; position:absolute; inset:0; pointer-events:none; opacity:.18; background-image:linear-gradient(125deg,transparent 59%,rgba(255,255,255,.12) 59.2%,transparent 59.4%),repeating-linear-gradient(105deg,transparent,transparent 42px,rgba(255,255,255,.10) 43px,transparent 44px); }
+    .hero .wrap{ position:relative; z-index:1; }
+    .topbar{ height:78px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,.13); }
+    .brand{ display:flex; align-items:center; gap:10px; font-size:23px; font-weight:900; letter-spacing:-.6px; color:#fff; text-decoration:none; white-space:nowrap; }
+    .slash{display:inline-flex;gap:4px;margin-right:2px}.slash i{display:block;width:13px;height:23px;background:#33b7ff;transform:skewX(-30deg)}.slash i+ i{background:#2583ec}
+    .topnote{font-size:13px;font-weight:650;letter-spacing:.025em;color:#d0e1f6}
+    .hero-content{ display:flex;align-items:center;justify-content:space-between; gap:40px;padding:47px 0 62px; }
+    .hero-copy{ max-width:750px; }
+    .eyebrow{ display:inline-block;color:#74d0ff;font-size:13px;letter-spacing:.08em;font-weight:850;margin-bottom:13px; }
+    h1{font-size:clamp(31px,3.05vw,47px);font-weight:900;letter-spacing:-.06em;line-height:1.25;margin:0 0 16px;}
+    h1 strong{color:#70d9ff}
+    .hero-desc{color:#d6e5f5;font-size:16px;margin:0;line-height:1.8}
+    .hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:25px}.chip{font-size:12px;padding:7px 11px;border:1px solid rgba(176,225,255,.25);background:rgba(255,255,255,.055);border-radius:999px;color:#d6eafe;}
+    .blueprint{position:relative;flex:0 0 290px;height:195px;opacity:.95}.bp-glow{position:absolute;inset:15px;filter:blur(40px);background:#3ca6e344;border-radius:100%}.bp-sheet{position:absolute;left:47px;top:31px;width:210px;height:135px;border:2px solid #8ab5d7;background:linear-gradient(145deg,#e4eff8 0%,#7c9eb8 48%,#d2e0ed 100%);transform:skewY(-13deg) rotate(-5deg);box-shadow:8px 10px 0 rgba(23,55,91,.9), 13px 15px 0 rgba(116,164,209,.32),0 16px 40px #0005;}.bp-sheet::before{content:"";position:absolute;inset:20px;border:1px solid #21446977}.bp-tag{position:absolute;right:0;bottom:6px;padding:7px 12px;border-radius:7px;background:#fff;color:#164b87;letter-spacing:.14em;font-size:10px;font-weight:850;box-shadow:var(--shadow)}
+    .intro{padding:30px 0 0;display:flex;justify-content:space-between;align-items:flex-end;gap:15px}.intro h2{margin:0 0 2px;font-size:23px;letter-spacing:-.035em}.intro p{margin:0;color:var(--sub);font-size:14px}.intro .updated{font-size:12px;color:#8291a5}
+    .columns{display:grid;grid-template-columns:minmax(340px,.85fr) minmax(0,1.25fr);align-items:start;gap:22px;margin:18px auto 32px;}
+    .card{background:#fff;border-radius:20px;box-shadow:var(--shadow);border:1px solid var(--line);overflow:hidden;}
+    .card-head{padding:26px 28px 19px;display:flex;gap:11px;align-items:center;border-bottom:1px solid var(--line);}.icon-circle{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:11px;background:var(--sky);color:var(--blue);flex-shrink:0;}.icon-circle svg{width:22px;height:22px}.card-head h3{font-size:19px;letter-spacing:-.04em;margin:0;line-height:1.25;}.card-head p{margin:5px 0 0;font-size:12px;color:var(--sub)}
+    .quote-form{padding:23px 28px 27px}.fieldset{display:grid;grid-template-columns:1fr 1fr;gap:17px 12px}.field{display:flex;flex-direction:column;gap:7px;min-width:0}.field label{font-size:13px;color:#354761;font-weight:800}.field label small{color:#8a98aa;font-weight:500}.field input,.field select{width:100%;height:52px;padding:0 14px;border:1px solid #d4dfeb;border-radius:10px;background:#fff;color:#203249;font-size:16px;font-weight:750;outline:none;transition:border-color .2s,box-shadow .2s}.field input:focus,.field select:focus{border-color:#3587ec;box-shadow:0 0 0 4px #3587ec15}.field input::placeholder{color:#acb7c3;font-weight:450}
+    .quantity-step{display:flex;width:100%;border:1px solid #d4dfeb;border-radius:10px;height:52px;overflow:hidden}.quantity-step button{border:0;background:#f4f8fc;width:48px;flex:0 0 48px;color:#264d7e;font-size:24px;transition:background .2s}.quantity-step button:hover{background:#e0eeff}.quantity-step input{text-align:center;border:0;height:50px;border-radius:0;min-width:0;box-shadow:none!important;appearance:textfield}.quantity-step input::-webkit-outer-spin-button,.quantity-step input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    .hint{margin-top:17px;display:flex;align-items:flex-start;gap:9px;padding:13px 14px;border-radius:11px;background:#f2f7fe;font-size:12px;color:#516783;line-height:1.7}.hint svg{height:17px;width:17px;flex:0 0 17px;margin-top:1px;color:#277de3}
+    .calc-button{width:100%;margin-top:20px;border:0;background:linear-gradient(95deg,#1566db,#0c4da7);color:white;height:56px;display:flex;align-items:center;justify-content:center;gap:10px;border-radius:12px;font-weight:850;font-size:16px;box-shadow:0 10px 18px rgba(16,95,208,.19);transition:transform .15s,box-shadow .15s}.calc-button:hover{transform:translateY(-1px);box-shadow:0 12px 21px rgba(16,95,208,.24)}.calc-button svg{width:20px;height:20px}
+    .form-error{min-height:19px;margin:10px 0 0;color:#d52a44;font-size:12px;font-weight:650}
+    /* 공급자 정보: 화면 / 이미지 견적서 / 인쇄 견적서 공통 내용 */
+    .supplier-card{display:grid;grid-template-columns:100px minmax(0,1fr);gap:17px;align-items:start;margin:18px 24px 0;padding:17px 20px;background:#f8fbff;border:1px solid #dae7f7;border-radius:13px}
+    .supplier-heading{font-weight:900;color:#0b3c78;font-size:15px;padding-top:2px}
+    .supplier-detail{display:grid;grid-template-columns:1fr 1fr;column-gap:20px;row-gap:7px;font-size:12px;color:#314765;line-height:1.5}
+    .supplier-detail .label{font-size:11px;color:#7488a1;margin-right:5px;font-weight:700}
+    .supplier-detail .supplier-email{grid-column:1 / -1;overflow-wrap:anywhere}
+    .result-stats{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:12px;padding:18px 24px;background:#f7faff}.stat{padding:5px 6px}.stat + .stat{border-left:1px solid #dae5f3;padding-left:21px}.stat small{display:block;color:#71829c;font-size:12px;font-weight:650}.stat strong{display:block;font-weight:900;font-size:24px;letter-spacing:-.04em;color:#162e55;margin:4px 0 0}.stat:first-child strong{font-size:30px;color:#0b5dca}.stat span.unit{font-size:15px;font-weight:750;margin-left:2px}
+    .quote-table-wrap{overflow-x:auto;scrollbar-width:thin}.quote-table{width:100%;border-collapse:collapse;white-space:nowrap;text-align:left}.quote-table th{font-size:12px;color:#677b96;background:#fafbfd;border-bottom:1px solid #e5ebf4;padding:15px 11px;font-weight:800}.quote-table td{border-bottom:1px solid #eaf0f5;padding:14px 11px;color:#2b3e58;font-size:13px;font-weight:600}.quote-table td:first-child,.quote-table th:first-child{padding-left:24px}.quote-table td:last-child,.quote-table th:last-child{padding-right:24px;text-align:right}.quote-table .t-strong{color:#113968;font-weight:850}.quote-table .monetary{color:#0958c5;font-weight:850}.remove{border:0;background:#f3f6fa;color:#7c8ba0;border-radius:8px;padding:6px 9px;font-size:12px;font-weight:700}.remove:hover{background:#ffedf0;color:#c51d4d}.mobile-quote-list{display:none}.empty-state{text-align:center;padding:56px 15px 47px}.empty-state svg{width:48px;height:48px;color:#a3b8d5;}.empty-state h4{font-size:16px;margin:11px 0 4px}.empty-state p{font-size:12px;color:#8593a7;margin:0}.result-foot{padding:20px 24px 23px;border-top:1px solid var(--line)}.info-note{display:flex;align-items:flex-start;gap:10px;border-radius:11px;background:#eaf4ff;padding:12px 14px;color:#3e638d;font-size:12px;line-height:1.65}.info-note strong{color:#0c4f9d}.info-note svg{width:18px;height:18px;flex:0 0 18px;color:#1975dc;margin-top:2px}.action-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.action-row button,.action-row a{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-align:center;flex:1 1 150px;min-height:45px;padding:10px 12px;border-radius:10px;font-size:13px;font-weight:850;text-decoration:none;white-space:nowrap}.action-row svg{width:16px;height:16px}.btn-border{background:#fff;border:1px solid #cbd8e8;color:#2b4b71}.btn-border:hover{background:#f2f8ff}.btn-naver{background:var(--green);border:1px solid var(--green);color:#fff}.btn-naver:hover{background:#06b953}
+    .below{padding-bottom:50px}.below-card{border:1px solid #d9e5f4;border-radius:16px;display:flex;align-items:flex-start;gap:16px;padding:20px 23px;background:#edf5ff}.below-card svg{width:28px;height:28px;color:#1e6bd1;flex-shrink:0}.below-card strong{font-size:14px}.below-card p{font-size:12px;color:#566d8b;line-height:1.8;margin:6px 0 0}.below-card .final-caution{color:#274d79;font-weight:700;margin-top:10px}.footer{border-top:1px solid #dce6f1;padding:22px 0 28px;color:#8b9aad;font-size:11px}.footer .wrap{display:flex;justify-content:space-between;gap:10px}.footer b{color:#607796;font-size:13px;letter-spacing:.01em}
+    #print-quote{display:none}
+    @media (max-width:1100px){.columns{grid-template-columns:minmax(330px,1fr) minmax(0,1.15fr);gap:15px}.wrap{width:min(100% - 32px,1280px)}.card-head{padding:22px 20px 17px}.quote-form{padding:20px}.result-stats{padding:16px}.stat + .stat{padding-left:13px}.stat strong{font-size:21px}.stat:first-child strong{font-size:25px}.quote-table th,.quote-table td{padding:12px 9px}}
+    @media (max-width:900px){.columns{grid-template-columns:1fr}.blueprint{display:none}.hero-content{padding:40px 0 42px}.hero-copy{max-width:650px}.intro{padding-top:25px}.topbar{height:66px}.brand{font-size:20px}.topnote{font-size:11px}.card{border-radius:17px}.result-stats{grid-template-columns:1.5fr 1fr 1fr}.columns{margin-top:15px}}
+    @media (max-width:700px){
+      .quote-table{display:none}.mobile-quote-list{display:grid;gap:10px;padding:14px}
+      .mobile-quote{background:#f8fbff;border:1px solid #dfebf7;border-radius:12px;padding:13px 14px}
+      .mobile-quote-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+      .mobile-quote-title strong{color:#1b3c6b;font-size:14px}
+      .mobile-quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px}
+      .mobile-quote-grid small{display:block;color:#7d8ea4;font-size:11px}
+      .mobile-quote-grid b{display:block;font-size:13px;color:#263b58}
+      .mobile-quote-grid .amount b{color:#0f63c9;font-size:15px}
     }
+    @media (max-width:530px){.supplier-card{grid-template-columns:1fr;gap:7px;margin:13px 14px 0;padding:14px}.supplier-detail{grid-template-columns:1fr;gap:6px;font-size:12px}.supplier-detail .supplier-email{grid-column:auto}}
+    @media (max-width:530px){.wrap{width:calc(100% - 26px)}.topbar{height:61px}.brand{font-size:18px}.slash i{width:10px;height:20px}.topnote{display:none}.hero-content{padding:27px 0 35px}.hero h1{font-size:30px;letter-spacing:-.055em}.hero-desc{font-size:13px}.eyebrow{font-size:11px}.hero-chips{margin-top:17px}.chip{font-size:10px}.intro h2{font-size:19px}.intro p{font-size:12px}.intro .updated{display:none}.card-head h3{font-size:17px}.fieldset{gap:14px 9px}.field label{font-size:12px}.field input,.field select{height:50px;font-size:15px;padding:0 10px}.quantity-step{height:50px}.quantity-step input{height:48px}.quantity-step button{width:38px;flex-basis:38px}.result-stats{padding:16px 12px;gap:0}.stat + .stat{padding-left:11px}.stat small{font-size:10px}.stat strong{font-size:17px}.stat:first-child strong{font-size:24px}.stat span.unit{font-size:12px}.result-foot{padding:16px}.quote-table th:first-child,.quote-table td:first-child{padding-left:15px}.footer .wrap{display:block}.footer b{display:block;margin-bottom:4px}.below-card{padding:16px;gap:10px}.below-card svg{width:22px}}
+    @media print{@page{size:A4; margin:13mm}body{background:#fff}.hero,.intro,.columns,.below,.footer{display:none!important}#print-quote{display:block;font-family:"Malgun Gothic",sans-serif;color:#111}#print-quote h2{font-size:24px;margin:12px 0 4px}#print-quote .print-meta{font-size:12px;color:#666}#print-quote table{width:100%;border-collapse:collapse;font-size:11px;margin:20px 0}#print-quote th,#print-quote td{border:1px solid #aeb6c1;padding:9px 7px}#print-quote th{background:#e9f2ff} #print-quote .print-total{text-align:right;font-size:20px;font-weight:800}#print-quote .supplier-print{display:grid;grid-template-columns:78px 1fr;border:1px solid #b2c3d6;margin:16px 0 10px;break-inside:avoid;font-size:12px}#print-quote .supplier-print-name{padding:15px 12px;font-weight:900;background:#e9f2ff;border-right:1px solid #b2c3d6;display:flex;align-items:center;justify-content:center}#print-quote .supplier-print-detail{padding:12px 15px;line-height:1.9}#print-quote table{margin-top:12px}}
 
-    th,
-    td {
-      padding: 5px;
-      text-align: left;
+    [hidden]{display:none!important}
+    .added-alert{margin:0 24px 14px;border-radius:10px;padding:11px 13px;background:#e9f8f1;border:1px solid #bfe9d1;color:#17623d;font-size:13px;font-weight:800;display:none}
+    .added-alert.is-visible{display:block}
+    .added-count{display:inline-block;font-size:12px;background:#e2efff;color:#15569c;padding:4px 8px;border-radius:999px;margin-left:7px}
+    @media(max-width:530px){.added-alert{margin:0 14px 12px}}
+    /* 입력 내용은 즉시 미리보기하고, 실제 견적서 항목은 추가 버튼으로 확정합니다. */
+    .draft-panel{margin:18px 24px 0;padding:18px 20px;border:1px solid #aed1ff;border-radius:13px;background:linear-gradient(135deg,#eef7ff,#fff);}
+    .draft-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:7px}
+    .draft-heading strong{font-size:15px;color:#0b386f}.draft-heading span{font-size:11px;color:#2365ae;background:#dceeff;padding:4px 9px;border-radius:99px;font-weight:800}
+    .draft-content{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .draft-caption{font-size:12px;color:#526b87;margin:0}.draft-money{font-size:26px;color:#0b5dca;letter-spacing:-.045em;font-weight:900;white-space:nowrap}
+    .draft-hint{margin:9px 0 0;font-size:12px;color:#466987;line-height:1.5}
+    .draft-hint.is-complete{color:#176d42;font-weight:800}
+    .calculator-status{font-size:12px;font-weight:700;color:#66809e;margin:9px 0 0}.calculator-status.is-ready{color:#176d50}.calculator-status.is-error{color:#b4213e}.form-success{color:#156d43;font-size:12px;font-weight:800;min-height:18px;margin:8px 0 0}
+    @media(max-width:530px){.draft-panel{margin:14px 14px 0;padding:14px}.draft-content{align-items:flex-start;flex-direction:column;gap:2px}.draft-money{font-size:25px}}
+    .material-caution {font-weight:700; color:#0b2b54; margin-top:10px;}
+
+    /* '02. 실시간 견적서' 제목의 오른쪽에 공급자 정보를 배치합니다. */
+    .result-header{display:grid;grid-template-columns:minmax(0,1fr) minmax(254px,.98fr);align-items:start;gap:20px;padding:23px 24px}
+    .result-title-left{display:flex;align-items:center;gap:11px;min-width:0;padding-top:6px}
+    .result-title-left h3{font-size:19px}
+    .result-header .supplier-card{display:block;min-width:0;margin:0;padding:14px 16px;background:#f8fbff;border:1px solid #dae7f7;border-radius:12px}
+    .result-header .supplier-heading{font-weight:900;font-size:14px;color:#0b3c78;padding:0 0 7px;border-bottom:1px solid #e0eafa;margin-bottom:8px}
+    .result-header .supplier-detail{display:flex;flex-direction:column;gap:4px;font-size:11.5px;line-height:1.46;color:#314765}
+    .result-header .supplier-detail .label{font-size:10.5px;color:#7488a1;display:inline-block;min-width:39px;font-weight:700;margin-right:3px}
+    .result-header .supplier-detail .supplier-email{overflow-wrap:anywhere}
+    /* 아래의 실시간 예상 금액은 전체 너비를 사용하며 공급자 정보와 나란히 놓지 않습니다. */
+    .quote-top-row{display:block;padding:18px 24px 0}
+    .quote-top-row .draft-panel{margin:0;padding:17px 18px;min-width:0}
+    .quote-top-row .draft-content{display:flex;flex-direction:row;align-items:center;justify-content:space-between}
+    .quote-top-row + .added-alert{margin-top:12px}
+    @media(min-width:901px) and (max-width:1190px){
+      .result-header{grid-template-columns:1fr;gap:12px}
+      .result-header .supplier-detail{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+      .result-header .supplier-detail .supplier-email{grid-column:1/-1}
     }
-
-
-    .main_inner_background {
-      background-color: lightblue;
-      width: 150px;
-      height: 75px;
+    @media(max-width:650px){
+      .result-header{grid-template-columns:1fr;gap:14px;padding:18px 16px}
+      .result-title-left{padding:0}
+      .result-header .supplier-card{padding:14px 15px}
+      .quote-top-row{padding:14px 14px 0}
+      .quote-top-row .draft-panel{padding:15px}
     }
-
-
-    .main_Text {
-      display: inline-block;
-      width: 150px;
-      height: 75px;
-
-      font-size: 20px;
-      text-align: center;
-    }
-
-    #Table_Right {
-  border-collapse: collapse;
-  text-align: left;
-  line-height: 1.5;
-
-}
-  #Table_Right thead th {
-  padding: 10px;
-  font-weight: bold;
-  vertical-align: top;
-  color: #369;
-  border-bottom: 3px solid #036;
-}
-  #Table_Right tbody th {
-
-  padding: 10px;
-  font-weight: bold;
-  vertical-align: top;
-  border-bottom: 1px solid #ccc;
-  background: #f3f6f7;
-}
-  #Table_Right td {
-
-  padding: 10px;
-  vertical-align: top;
-  border-bottom: 1px solid #ccc;
-}
-
-button{
-  background:#1AAB8A;
-  color:#fff;
-  border:none;
-  position:relative;
-  height:60px;
-  font-size:1.6em;
-  padding:0 2em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
-}
-button:hover{
-  background:#fff;
-  color:#1AAB8A;
-}
-button:before,button:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: #1AAB8A;
-  transition:400ms ease all;
-}
-button:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
-}
-button:hover:before,button:hover:after{
-  width:100%;
-  transition:800ms ease all;
-}
-
-
+    @media(max-width:420px){.quote-top-row .draft-content{flex-direction:column;align-items:flex-start;gap:4px}}
   </style>
-  <script src="table2excel.js"></script>
-  <script lang="javascript" src="dist/xlsx.full.min.js"></script>
-  <script src="html2canvas.js"></script>
 </head>
-<header style="text-align: center; font-size: 40px;">제작 금액 견적 알아보기</header>
-
-<!-- <body style="background-color:#F7F8B1;"> -->
-  <body>
-
-  <!--   
-<p>lasermarket11@gmail.com</p>
-<p>국민 512001-04-444197</p>
-<p>3.2T 이상 절곡 요청시, 최소 외장길이 10cm 이상만 가능</p>
-<p>최대 크기 1219*2438mm 이하</p>
-<p>1cm 10mm</p>
-<p>10cm 100mm</p> -->
-
-
-
-  <div class="main" style="width: 100%;">
-    <div class="left_main" style="border:  1px solid blue; float: left; width: 45%; min-width: 700px; margin-top: 20px;">
-      <div style="float: left; margin-top: 20px">
-        <div class="div_material_type_text main_Text" style="float: left;">재질</div>
-        <div class="div_material_type main_Text">
-          <select onchange="doSomething_Version_2(this)" id="select_material_type" style="font-size: 20px; width: 100%; height: 95%;
-          text-align-last: center; font-weight: bold;
-   text-align: center;
-   -ms-text-align-last: center;
-   -moz-text-align-last: center;">
-            <option value="NONE">재질선택</option>
-            <option value="SS400">SS400</option>
-            <option value="ATOS80">ATOS80(ATOS780)</option>
-            <option value="S45C">S45C</option>
-            <option value="SM490A">SM490A</option>
-            <option value="SUS-1D">SUS-1D</option>
-            <option value="SUS-2B">SUS-2B</option>
-            <option value="SUS-HL">SUS-HL</option>
-            <option value="SUS-PL">SUS-PL</option>
-            <option value="AL">AL</option>" +
-            <option value="AL-CK">AL-CK</option>";
-          </select>
-
-        </div>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="topbar">
+        <a class="brand" href="#top" aria-label="레이저 마켓 홈"><span class="slash" aria-hidden="true"><i></i><i></i></span>LASER MARKET</a>
+        <div class="topnote">철판 레이저 절단 · 절곡 맞춤 제작</div>
       </div>
-      <div style="float: left; margin-top: 20px;">
-        <div class="main_3 main_Text" style="float: left;">두께</div>
-        <div class="main_4 main_Text">
-          <select id="select_thick" style="font-size: 20px; width: 100%; height: 95%; font-weight: bold;
-          text-align-last: center;
-   text-align: center;
-   -ms-text-align-last: center;
-   -moz-text-align-last: center;">
-
-          </select>
+      <div class="hero-content" id="top">
+        <div class="hero-copy">
+          <span class="eyebrow">LASER MARKET · ONLINE ESTIMATE</span>
+          <h1>사각 절단<br><strong>셀프 견적 알아보기</strong></h1>
+          <p class="hero-desc">원하시는 재질과 두께, 가로·세로 규격 및 제작 수량을 입력하면<br>사각 판재 절단의 예상 제작금액을 바로 확인할 수 있습니다.</p>
+          <div class="hero-chips"><span class="chip">✓ 별도 회원가입 없이 이용</span><span class="chip">✓ 여러 견적 항목 합산</span><span class="chip">✓ 네이버 결제 수량 안내</span></div>
         </div>
-      </div>
-      <div style="clear: both; ">
-
-
-        <div style="float: left; margin-top: 20px;">
-          <div class="div_material_type_text main_Text" style="float: left;">가로(mm)</div>
-          <div class="div_material_type main_Text" style="float: left;">
-            <input id="input_size_x" type="number" min="0" step="1" style="width: 95%;   height: 95%; background-color: lightcyan;
-            font-size:20px; font-weight: bold; text-align: center;" />
-          </div>
-        </div>
-        <div style="float: left; margin-top: 20px;">
-
-          <div class="main_3 main_Text" style="float: left;">세로(mm)</div>
-          <div class="main_4 main_inner_background" style="float: left;">
-            <input type="number" min="0" step="1" id="input_size_y" style="width: 95%; font-weight: bold; height: 95%;  background-color: lightcyan;
-               font-size:20px; text-align: center;" />
-          </div>
-        </div>
-      </div>
-      <div style="float: left; margin-top: 20px;">
-        <div style="float: left;">
-          <div class="div_material_type_text main_Text" style="float: left;">총 수량</div>
-          <div class="div_material_type main_Text" style="float: left;">
-            <input id="input_count" type="number" min="0" step="1" style="width: 95%; font-weight: bold; height: 95%; background-color: lightcyan;
-               font-size:20px; text-align: center;" />
-          </div>
-        </div>
-        <div style="float: left;">
-          <div style=" float: left; width: 100%;" class="main_3">
-            <button onclick="GetData()" style="width: 280px; height: 65px; font-size: 20px; font-weight: bold; 
-            margin-left: 20px; margin-top: 11px; ">
-              계산 금액 확인하기
-            </button>
-            
-          </div>
-        </div>
-
-
-
-      </div>
-      <div class="div_main_other" style="clear: both;  margin-top: 50px;">
-        <div style="margin-top: 20px;">
-          <pre id="pre_output" style="margin-top: 30px; font-size: 20px;">
-
-        </pre>
-        </div>
-
-        <div style="width:800px; margin:20px;">
-          <pre style="float: left; font-size: 20px;">네이버 주문 수량은</pre>
-          <button style="float: left; font-size: 20px; height: 50px;">-</button>
-          <input id="input_naverpay" style="float: left; 
-           font-size: 20px; font-weight: bold; width: 50px; height: 45px;" type="number" height="40px" width="50" min="0" step="1" />
-          <button style="float: left; font-size: 20px; height: 50px;">+</button>
-          <pre style="float: left; font-size: 20px; "> 입니다 </pre>
-        </div>
-
+        <div class="blueprint" aria-hidden="true"><span class="bp-glow"></span><span class="bp-sheet"></span><span class="bp-tag">RECTANGULAR CUTTING</span></div>
       </div>
     </div>
-    <div id="right_main" class="right_main" style="float: left; width: 45%; min-width : 700px; margin: 20px;">
-      <div class="my-box" style="border: 1px solid black; float: left; width: 100%;">
-
-        <pre class="my-box" style="border: 1px solid black; float: left; width: 40%;
-          text-align: center;
-          font-size: 20px; 
-          text-align: left;">
-            <b>견적서</b>
-         
-            </pre>
-
-        <div class="my-box" style="border: 0px solid gold; float: left; width: 59%;">
-          <table id="" style="width: 95%; margin:auto">
-
-            <thead>
-              <tr>
-                <th>공급자 </th>
-              </tr>
-              <tr>
-                <td> 등 록 번 호 : 533-06-01928 <br>
-                  상 호 : 레이저 마켓 성명 : 조민영 <br>
-                  <!-- 주 소 : 전북 김제시 백구면 석담4길 131-9 <br> -->
-                  T.(063) 291 - 3000 F:214 - 3000 <br>
-                  E -mail : lasermarket11@naver.com</td>
-               
-              </tr>
-
-            </thead>
-          </table>
-        </div>
-
-        <hr style="height:0px;border-width:0;width: 95%; color:gray;background-color:gray" />
-
-        <pre pre id="right_time_text" style="width: 100%; text-align:center; 
-        border-top: 1px dotted red;">
-         
-             </pre>
-
-
-            
-        <table id="Table_Right" style="width: 95%; margin:auto">
-
-          <thead>
-
-          <tr>
-            <th id ="col_No">No</th>
-            <th id ="col_type_thick" >재질.두께</th>
-            <th id ="col_size">규격</th>
-            <th id ="col_count">수량</th>
-            <th id ="col_ea">단위</th>
-            <th id ="col_price">단가</th>
-            <th id ="col_all_price">공급가액</th>
-            <th id ="col_naver">네이버<br>주문수량</th>
-            <th></th>
-          </tr>
-
-</thead>
-          <tr>
-            <td colspan="3">TOTAL</td>
-            <td colspan="1">0</td>
-            <td></td>
-            <td>\</td>
-            <td>-</td>
-            <td>-</td>
-          </tr>
-
-
-        </table>
-
-        <button style="margin: 5px; float: left;" type="button" id ="excelFileExport" >견적서 출력</button>
-
-        <!-- 파일 내보내기(HTML TABLE) : <input type="button" id="excelFileExport" value="엑셀 파일 다운로드(TABLE) 사용불가 TEST" /> -->
-        <button style="margin: 5px; float: left;" type="button" onclick="window.open('https://smartstore.naver.com/lasermarket11')">주문하러가기</button>
-      
-        
-      </div>
-
-    <b  text-align: center> COPYRIGHT ⓒ 2021 YMS ALL RIGHTS RESERVED.  </b>
-  
+  </header>
+  <main class="wrap">
+    <div class="intro">
+      <div><h2>제작 금액을 간편하게 확인하세요.</h2><p>재질과 규격을 입력하면 예상 금액을 바로 확인할 수 있습니다. 버튼을 누르면 견적서에 추가됩니다.</p></div>
+      <span class="updated">모든 금액은 원(₩) 기준 · 업데이트 2026.11.25-R5</span>
     </div>
-  </div>
-
-
-  <!-- <button type="button" style="width: 100%;font-size : 20px; background-color: blanchedalmond;" onclick="myFunction()">
-    항목 추가 </button>
-
-  <table id="myTable" style="width: 100%;">
-    <tr>
-      <th width="10%">① 재질</th>
-      <th width="10%">② 두께</th>
-      <th width="10%">③ 가로</th>
-      <th width="10%">④ 세로</th>
-      <th width="10%">⑤ 수량</th>
-      <th width="5%"></th>
-    </tr>
-  </table>
-  <br>
-  <button id="btn_estimate" class="favorite styled"
-    style="width: 100%;font-size : 20px; background-color: blanchedalmond; margin-bottom: 20px;" type="button"
-    onclick="CheckEstimate()">
-    견적확인
-  </button>
-  <br>
-
-  <div style="border: 1px solid ; float: left; width: 100%;">
-    <div style="border: 0px solid ;  width: 50%; 
-  max-width: 50%;
-   min-width: 700px;">
-
-      <div class="my-box" style="border: 1px solid gold; float: left; width: 100%;">
-
-        <pre class="my-box" style="border: 1px solid black; float: left; width: 40%;
-        text-align: center;
-        font-size: 20px; 
-        text-align: left;">
-          <b>레이저 마켓</b>
-          </pre>
-        <div class="my-box" style="border: 0px solid gold; float: left; width: 59%;">
-          <table style="width:100%">
-            <tr>
-              <th>상호명</th>
-              <td>레이저 마켓</td>
-            </tr>
-            <tr>
-              <th>사업자등록번호</th>
-              <td>5330000000</td>
-            </tr>
-            <tr>
-              <th>통신판매업번호</th>
-              <td>2021-전주완산-0095</td>
-            </tr>
-            <tr>
-              <th>고객센터 </th>
-              <td>063-291-3000</td>
-            </tr>
-          </table>
+    <div class="columns">
+      <section class="card" aria-labelledby="form-title">
+        <div class="card-head">
+          <span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8 12 4l8 4-8 4-8-4Zm0 5 8 4 8-4M4 18l8 4 8-4" transform="translate(0 -1)"/></svg></span>
+          <div><h3 id="form-title">01. 사각 절단 규격 입력</h3><p>제작하실 판재의 정보를 입력해 주세요.</p></div>
         </div>
-
-        <hr style="height:0px;border-width:0;width: 95%; color:gray;background-color:gray" />
-
-        <pre style="width: 100%; text-align:center;">
-   인 터 넷 쇼 핑 몰 https://smartstore.naver.com/lasermarket11
-      </pre>
-
-        <pre id="left_time_text" style="width: 100%; text-align:center; 
-      border-top: 1px dotted red;">
-        2021-07-26 11:55
-           </pre>
-
-
-
-        <table id="Table_Left" style="width: 95%; margin:auto">
-
-
-          <tr>
-            <th>철판 소재명</th>
-            <th>주문크기</th>
-            <th>네이버 주문수량</th>
-          </tr>
-
-
-
-
-
-        </table>
-        <hr style="height:2px;border-width:0;width: 95%; color:gray;background-color:gray" />
-        <div style="width: 95%;">
-          <pre style="float: left;
-        font-size: 20px;"> <b> 합   계</b></pre>
-          <pre id="left_total_bill" style="float: right;
-        font-size: 20px;"><b>\0</b> </pre>
+        <form id="estimate-form" class="quote-form" novalidate>
+          <noscript><p style="padding:14px;border-radius:8px;color:#ae2433;background:#fff0f2">이 견적 계산기는 JavaScript가 필요합니다. 브라우저 설정에서 JavaScript를 허용해 주세요.</p></noscript>
+          <div class="fieldset">
+            <div class="field"><label for="material">재질</label><select id="material" required><option value="" selected disabled>재질 선택</option><option value="SS400">일반 철판 (SS400)</option><option value="ATOS80">ATOS780 (ATOS80)</option><option value="S45C">S45C</option><option value="SM490A">SM490A</option><option value="SUS-1D">스테인리스 SUS-1D</option><option value="SUS-2B">스테인리스 SUS-2B</option><option value="SUS-HL">스테인리스 SUS-HL</option><option value="SUS-PL">스테인리스 SUS-PL</option><option value="AL">알루미늄 AL</option><option value="AL-CK">알루미늄 체크 AL-CK</option></select></div>
+            <div class="field"><label for="thickness">두께 <small>(T = mm)</small></label><select id="thickness" required disabled><option value="">재질을 먼저 선택하세요</option></select></div>
+            <div class="field"><label for="width">가로 <small>(mm)</small></label><input id="width" type="number" min="1" step="1" inputmode="numeric" placeholder="예: 200" required></div>
+            <div class="field"><label for="height">세로 <small>(mm)</small></label><input id="height" type="number" min="1" step="1" inputmode="numeric" placeholder="예: 300" required></div>
+            <div class="field" style="grid-column:1/-1"><label for="quantity">제작 수량 <small>(실제로 만들 제품 수량)</small></label><div class="quantity-step"><button type="button" id="qty-minus" aria-label="제작 수량 1개 감소">−</button><input id="quantity" type="number" value="1" min="1" max="100000" step="1" inputmode="numeric" required><button type="button" id="qty-plus" aria-label="제작 수량 1개 증가">+</button></div></div>
+          </div>
+          <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></svg><div>규격은 <b>가로 × 세로(mm)</b>로 입력하세요. 사각형이 아닌 형상이나 절곡 제품은 별도 상담이 필요합니다.</div></div>
+          <button class="calc-button" type="button" id="add-quote-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h2m4 0h2m-8 4h2m4 0h2m-8 4h2m4 0h2"/></svg>견적 계산 후 항목 추가</button>
+          <p id="calculator-status" class="calculator-status" role="status" aria-live="polite">견적 계산기를 불러오는 중입니다. 새로고침 후에도 이 문구가 계속 보이면 문의해 주세요.</p>
+          <p id="form-error" class="form-error" role="alert" aria-live="polite"></p><p id="form-success" class="form-success" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+      <section class="card" aria-labelledby="result-title" id="results">
+        <div class="card-head result-header">
+          <div class="result-title-left"><span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3h11v18H5V6l3-3Zm0 0v4H5M9 11h7m-7 4h7m-7 4h4"/></svg></span><div><h3 id="result-title">02. 실시간 견적서 <span id="added-count" class="added-count">0건</span></h3><p>견적 항목과 총 결제금액을 한눈에 확인하세요.</p></div></div>
+          <section class="supplier-card" aria-label="견적서 공급자 정보">
+          <div class="supplier-heading">공급자</div>
+          <div class="supplier-detail">
+            <div><span class="label">등록번호</span> 533-06-01928</div>
+            <div><span class="label">상호</span> 레이저 마켓 <span class="label" style="margin-left:7px">성명</span> 조민영</div>
+            <div><span class="label">전화</span> (063) 291 - 3000</div>
+            <div><span class="label">팩스</span> 214 - 3000</div>
+            <div class="supplier-email"><span class="label">이메일</span> lasermarket11@gmail.com</div>
+          </div>
+        </section>
         </div>
-        <hr style="height:2px;border-width:0;width: 95%; color:gray;background-color:gray" />
-        <pre style="width: 100%; text-align:center;">
-        주문 제작 방식으로 평일 기준 3~5일 작업시간이 소요되며
-        구매 가능 두께는 당사 사정으로 변경될 수 있으며 사전 안내 드리고 있습니다.
-   (세부사항 https://smartstore.naver.com/lasermarket11 참조)
-      </pre>
-        <hr style="height:2px;border-width:0;width: 95%; color:gray;background-color:gray" />
+        <div class="quote-top-row" aria-label="입력 중인 제품 실시간 예상 견적">
+        <section id="draft-panel" class="draft-panel" aria-live="polite" aria-label="입력 중인 견적 실시간 미리보기">
+          <div class="draft-heading"><strong>입력 중인 제품 · 실시간 예상 금액</strong><span>견적서 추가 전 미리보기</span></div>
+          <div class="draft-content"><p id="draft-caption" class="draft-caption">왼쪽에서 재질과 규격을 입력하면 즉시 계산됩니다.</p><strong id="draft-money" class="draft-money">—</strong></div>
+          <p id="draft-hint" class="draft-hint">최종 견적서에 넣으려면 ‘견적 계산 후 항목 추가’를 눌러 주세요.</p>
+        </section>
 
-
-      </div>
-
-
+        </div>
+        <div id="added-alert" class="added-alert" role="status" aria-live="polite"></div>
+        <div class="result-stats" aria-live="polite">
+          <div class="stat"><small>총 예상 견적금액</small><strong id="total-price">0<span class="unit">원</span></strong></div>
+          <div class="stat"><small>실제 제작 수량</small><strong id="total-count">0<span class="unit">개</span></strong></div>
+          <div class="stat"><small>네이버 주문 수량</small><strong id="total-naver">0<span class="unit">개</span></strong></div>
+        </div>
+        <div class="quote-table-wrap" id="quote-table-wrap"><table class="quote-table" aria-label="견적 항목 목록"><thead><tr><th>No.</th><th>재질 / 두께</th><th>규격(mm)</th><th>제작 수량</th><th>개당 금액</th><th>공급가액</th><th>네이버 수량</th><th>삭제</th></tr></thead><tbody id="quote-rows"></tbody></table><div id="mobile-quote-list" class="mobile-quote-list"></div><div class="empty-state" id="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3h11v18H5V6l3-3Zm0 0v4H5M9 11h7m-7 4h7m-7 4h4"/></svg><h4>아직 계산한 견적이 없습니다.</h4><p>왼쪽에 재질과 규격을 입력해 견적을 추가해 주세요.</p></div></div>
+        <div class="result-foot">
+          <div class="info-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></svg><div><strong>제작 수량과 네이버 주문 수량은 다릅니다.</strong><br>네이버 주문 수량은 <b>예상 견적금액 ÷ 100원</b>입니다. 실제 제작 수량을 입력하는 칸이 아닙니다.</div></div>
+          <div class="action-row"><button type="button" class="btn-border" id="download-btn">견적서 이미지 저장</button><button type="button" class="btn-border" id="print-btn">인쇄 / PDF</button><a class="btn-naver" target="_blank" rel="noopener noreferrer" href="https://smartstore.naver.com/lasermarket11">네이버에서 주문하기 ↗</a></div>
+        </div>
+      </section>
     </div>
-
-
-    <div style="border: 0px solid ;  width: 50%; 
-      max-width: 49%; float: left;
-       min-width: 700px;">
-
-      <div class="my-box" style="border: 1px solid gold; float: left; width: 100%;">
-
-        <pre class="my-box" style="border: 1px solid black; float: left; width: 40%;
-            text-align: center;
-            font-size: 20px; 
-            text-align: left;">
-              <b>견적서</b>
-              </pre>
-
-        <div class="my-box" style="border: 0px solid gold; float: left; width: 59%;">
-          <table id="" style="width: 95%; margin:auto">
-
-            <thead>
-              <tr>
-                <th>공급자</th>
-              </tr>
-              <tr>
-                <td> 등 록 번 호 : 533-06-01928 <br>
-                  상 호 : 레이저 마켓 성명 : 조민영 <br>
-                  주 소 : 전북 김제시 백구면 석담4길 131-9 <br>
-                  T.(063) 291 - 3000 F:214 - 3000 <br>
-                  E -mail : lasermarket11@naver.com</td>
-              </tr>
-
-            </thead>
-          </table>
-        </div>
-
-        <hr style="height:0px;border-width:0;width: 95%; color:gray;background-color:gray" />
-
-        <pre pre id="right_time_text_2" style="width: 100%; text-align:center; 
-          border-top: 1px dotted red;">
-            2021-07-26 11:55
-               </pre>
-
-
-
-        <table id="Table_Right_2" style="width: 95%; margin:auto">
-
-
-          <tr>
-            <th>No</th>
-            <th>재질.두께</th>
-            <th>규격</th>
-            <th>수량</th>
-            <th>단위</th>
-            <th>단가</th>
-            <th>공급가액</th>
-            <th>비고</th>
-
-          </tr>
-
-
-          <tr>
-            <td colspan="3">TOTAL</td>
-            <td colspan="1">0</td>
-            <td></td>
-            <td>\</td>
-            <td>-</td>
-
-          </tr>
-
-
-        </table>
-
-      </div>
-
-
-    </div>
-  </div> -->
-
-
-  <script>
-    var iTotalPay = 0;
-
-    //yFunction();
-    //myFunction();
-    //myFunction();
-    //   myFunction();
-    //   myFunction();
-    //  myFunction();
-    // myFunction();
-    function numberWithCommas(x) {
-      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-    function SetRightTableTotal() {
-      try {
-        iTotalPay = 0;
-        var total_count = 0;
-        var total_payment = 0;
-        var total_naver_count = 0;
-        var product_price = 0;
-        var table = document.getElementById('Table_Right');
-        for (var r = 1, n = table.rows.length - 1; r < n; r++) {
-          for (var c = 0, m = table.rows[r].cells.length - 1; c < m; c++) {
-
-            if (c == 3) {
-              total_count += parseInt(table.rows[r].cells[c].innerHTML);
-              //alert(total_count);
-            }
-
-            if (c == 6) {
-              // numberWithCommas(table.rows[r].cells[c].innerHTML);
-              total_payment += parseInt(table.rows[r].cells[c].innerHTML.replace(",", ""));
-              //alert(total_payment);
-            }
-            if (c == 5) {
-              // numberWithCommas(table.rows[r].cells[c].innerHTML);
-              product_price += parseInt(table.rows[r].cells[c].innerHTML.replace(",", ""));
-              //alert(total_payment);
-            }
-
-            if (c == 7) {
-              total_naver_count += parseInt(table.rows[r].cells[c].innerHTML);
-              // alert(total_naver_count);
-            }
-
-          }
-        }
-        iTotalPay = total_payment;
-        //      var tmp = table.rows.length-2;
-        //alert(table.row[tmp].cells.length);
-
-        table.rows[table.rows.length - 1].cells[1].innerHTML = "<td>" + String(addComma(total_count)) + "</td>";
-        table.rows[table.rows.length - 1].cells[2].innerHTML = "<td>" + "EA" + "</td>";
-        table.rows[table.rows.length - 1].cells[3].innerHTML = "<td>" + "\\" + String(addComma(product_price)) + "</td>";
-        table.rows[table.rows.length - 1].cells[4].innerHTML = "<td>" + "\\" + String(addComma(total_payment)) + "</td>";
-       
-        table.rows[table.rows.length - 1].cells[5].innerHTML = "<td>" + String(addComma(total_naver_count)) + "</td>";
-      } catch (error) {
-        alert(error);
-      }
-
-    }
-
-    function doSomething_Version_2(a) {
-      try {
-
-        //@@ 두께 입력 란
-        var var_Width = "";
-        var var_Height = "";
-        var var_Thick = "";
-
-        //선택된값
-        var selectedItem = a.options[a.selectedIndex];
-        //  alert(selectedItem.value);
-        switch (String(selectedItem.value)) {
-          case 'SS400':
-            var_Thick += "<option value='1.6'>1.6</option>";
-            var_Thick += "<option value='2'>2</option>";
-            var_Thick += "<option value='3'>3</option>";
-            var_Thick += "<option value='3.2'>3.2</option>";
-            var_Thick += "<option value='4'>4</option>";
-            var_Thick += "<option value='4.5'>4.5</option>";
-            var_Thick += "<option value='6'>6</option>";
-            var_Thick += "<option value='9'>9</option>";
-            var_Thick += "<option value='12'>12</option>";
-            var_Thick += "<option value='16'>16</option>";
-
-            break;
-          case 'ATOS80':
-
-            var_Thick += "<option value='3.2'>3.2</option>";
-            var_Thick += "<option value='4.5'>4.5</option>";
-            var_Thick += "<option value='6'>6</option>";
-            var_Thick += "<option value='8'>8</option>";
-            var_Thick += "<option value='10'>10</option>";
-            var_Thick += "<option value='12'>12</option>";
-
-
-            break;
-          case 'S45C':
-            var_Thick += "<option value='12'>12</option>";
-            break;
-
-case 'SM490A':
-var_Thick += "<option value='19'>19</option>";
-break;
-
-          case 'SUS-1D':
-
-            var_Thick += "<option value='3'>3</option>";
-            var_Thick += "<option value='4'>4</option>";
-            var_Thick += "<option value='5'>5</option>";
-            var_Thick += "<option value='6'>6</option>";
-            var_Thick += "<option value='8'>8</option>";
-            var_Thick += "<option value='12'>12</option>";
-
-            break;
-          case 'SUS-2B':
-
-            var_Thick += "<option value='1'>1</option>";
-            var_Thick += "<option value='1.2'>1.2</option>";
-            var_Thick += "<option value='1.5'>1.5</option>";
-            var_Thick += "<option value='2'>2</option>";
-
-            break;
-          case 'SUS-HL':
-            var_Thick += "<option value='1'>1</option>";
-            var_Thick += "<option value='1.5'>1.5</option>";
-            var_Thick += "<option value='2'>2</option>";
-            break;
-          case 'SUS-PL':
-            var_Thick += "<option value='1'>1</option>";
-            var_Thick += "<option value='1.5'>1.5</option>";
-            var_Thick += "<option value='2'>2</option>";
-            break;
-          case 'AL':
-            var_Thick += "<option value='2'>2</option>";
-            var_Thick += "<option value='3'>3</option>";
-            break;
-
-          case 'AL-CK':
-            var_Thick += "<option value='2'>2</option>";
-            break;
-        }
-        var thick_select = document.getElementById('select_thick');
-
-        thick_select.innerHTML = var_Thick;
-
-        // var col_thick = a.parentNode.parentNode.cells[1];
-        // var col_width = a.parentNode.parentNode.cells[2];
-        // var col_height = a.parentNode.parentNode.cells[3];
-        // col_thick.innerHTML = "<select width='50'>" +
-        //   var_Thick + "</select>";
-
-
-
-
-      } catch (error) {
-        alert("ERROR" + error);
-      }
-
-    }
-    function doSomething(a) {
-      try {
-
-        //@@ 두께 입력 란
-        var var_Width = "";
-        var var_Height = "";
-        var var_Thick = "";
-
-        //선택된값
-        var selectedItem = a.options[a.selectedIndex];
-        // alert(selectedItem.value);
-        switch (String(selectedItem.value)) {
-          case 'SS400':
-            var_Thick += "<option value='1.6'>1.6</option>";
-            var_Thick += "<option value='2'>2</option>";
-            var_Thick += "<option value='3'>3</option>";
-            var_Thick += "<option value='3.2'>3.2</option>";
-            var_Thick += "<option value='4'>4</option>";
-            var_Thick += "<option value='4.5'>4.5</option>";
-            var_Thick += "<option value='6'>6</option>";
-            var_Thick += "<option value='9'>9</option>";
-
-
-            break;
-          case 'ATOS80':
-
-            var_Thick += "<option value='3.2'>3.2</option>";
-            var_Thick += "<option value='4.5'>4.5</option>";
-            var_Thick += "<option value='6'>6</option>";
-            var_Thick += "<option value='8'>8</option>";
-            var_Thick += "<option value='10'>10</option>";
-            var_Thick += "<option value='12'>12</option>";
-
-
-            break;
-          case 'S45C':
-            var_Thick += "<option value='1.2'>1.2</option>";
-            break;
-          case 'SUS-1D':
-
-            var_Thick += "<option value='3'>3</option>";
-            var_Thick += "<option value='4'>4</option>";
-            var_Thick += "<option value='5'>5</option>";
-            var_Thick += "<option value='6'>6</option>";
-            var_Thick += "<option value='8'>8</option>";
-            var_Thick += "<option value='12'>12</option>";
-
-            break;
-          case 'SUS-2B':
-
-            var_Thick += "<option value='1'>1</option>";
-            var_Thick += "<option value='1.2'>1.2</option>";
-            var_Thick += "<option value='1.5'>1.5</option>";
-            var_Thick += "<option value='2'>2</option>";
-
-            break;
-          case 'SUS-HL':
-            var_Thick += "<option value='1'>1</option>";
-            var_Thick += "<option value='1.5'>1.5</option>";
-            var_Thick += "<option value='2'>2</option>";
-            break;
-          case 'SUS-PL':
-            var_Thick += "<option value='1'>1</option>";
-            var_Thick += "<option value='1.5'>1.5</option>";
-            var_Thick += "<option value='2'>2</option>";
-            break;
-          case 'AL':
-            var_Thick += "<option value='2'>2</option>";
-            var_Thick += "<option value='3'>3</option>";
-            break;
-
-          case 'AL-CK':
-            var_Thick += "<option value='2'>2</option>";
-            break;
-        }
-
-        var col_thick = a.parentNode.parentNode.cells[1];
-        var col_width = a.parentNode.parentNode.cells[2];
-        var col_height = a.parentNode.parentNode.cells[3];
-        col_thick.innerHTML = "<select width='50'>" +
-          var_Thick + "</select>";
-
-
-
-
-      } catch (error) {
-        alert("ERROR" + error);
-      }
-
-    }
-    function getCurrentDate() {
-      var date = new Date();
-      var year = date.getFullYear().toString();
-
-      var month = date.getMonth() + 1;
-      month = month < 10 ? '0' + month.toString() : month.toString();
-
-      var day = date.getDate();
-      day = day < 10 ? '0' + day.toString() : day.toString();
-
-      var hour = date.getHours();
-      hour = hour < 10 ? '0' + hour.toString() : hour.toString();
-
-      var minites = date.getMinutes();
-      minites = minites < 10 ? '0' + minites.toString() : minites.toString();
-
-      var seconds = date.getSeconds();
-      seconds = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
-
-      return year + "-" + month + "-" + day + " " + hour + ":" + minites + ":" + seconds;
-    }
-
-    function CheckEstimate() {
-
-      try {
-        var AllPayValue = 0;
-        var tableHeaderRowCount = 1;
-        var table = document.getElementById('Table_Left');
-        var rowCount = table.rows.length;
-        for (var i = tableHeaderRowCount; i < rowCount; i++) {
-          table.deleteRow(tableHeaderRowCount);
-        }
-        var tableHeaderRowCount = 1;
-        var table = document.getElementById('Table_Right');
-        var rowCount = table.rows.length;
-        for (var i = tableHeaderRowCount; i < rowCount - 1; i++) {
-          table.deleteRow(tableHeaderRowCount);
-        }
-
-        var var_time = getCurrentDate();//;
-        document.getElementById('left_time_text').innerHTML = var_time;
-        document.getElementById('right_time_text').innerHTML = var_time;
-
-
-
-        var testTable = document.getElementById('myTable');
-        //alert(testTable.rows.length);
-
-        for (i = 1; i < testTable.rows.length; i++) {
-
-          var material_type = null;
-          var material_size_x = null;
-          var material_size_y = null;
-          var material_size_t = null;
-          var material_count = null;
-
-          //값 다 채워지면
-          var isValueOK = new Boolean(true);
-          var recordcells = testTable.rows.item(i).cells;
-          for (var j = 0; j < recordcells.length; j++) {
-
-
-            //콤보박스 선택 됐을때만
-            var isSelected = recordcells.item(0).getElementsByTagName("select")[0].value;
-            //alert(isSelected);
-            if (isSelected != "NONE") {
-              var record;
-              if (j == 0 || j == 1) {
-
-                record = recordcells.item(j).getElementsByTagName("select")[0].value;
-              }
-              else if (j == 5) {
-
-              }
-              else {
-
-                record = recordcells.item(j).getElementsByTagName("input")[0].value;
-
-                if (String(record.length) == 0) {
-                  isValueOK = Boolean(false);
-                }
-              }
-
-
-              switch (j) {
-                case 0:
-                  material_type = record;
-
-                  break;
-                case 1:
-                  material_size_t = record;
-
-                  break;
-                case 2:
-                  material_size_x = record;
-
-                  break;
-                case 3:
-                  material_size_y = record;
-
-                  break;
-                case 4:
-                  material_count = record;
-
-                  break;
-
-              }
-
-            }
-            else {
-
-              isValueOK = Boolean(false);
-
-            }
-
-
-
-
-            //Now you can add this record as per your required format (list or in json format)
-          }
-
-          if (isValueOK) {
-            var var_material_type = String(material_type).concat(" ", String(material_size_t), "T");
-            var material_size = material_size_x + " x " + material_size_y;
-
-            var PayValue = FuncPayment(material_type, material_size_t, material_size_x, material_size_y, material_count);
-            PayValue = Math.ceil(PayValue);
-            //  alert(PayValue);
-            var NaverCount = Math.ceil(PayValue / 100);
-
-            //  alert(i);
-            //  alert("MAKE");
-            LeftTableInert(var_material_type, material_size, NaverCount);
-            RightTableInert(var_material_type, material_size, material_count, PayValue);
-
-            AllPayValue += NaverCount;
-
-          }
-        }
-
-        document.getElementById('left_total_bill').innerHTML = '<b>\\' + (AllPayValue * 100) + "<b>";
-
-      } catch (error) {
-        alert("ERROR" + error);
-      }
-
-
-    }
-
-    function GetData() {
-      try {
-        var Material_x = document.getElementById('input_size_x').value;
-        var Material_y = document.getElementById('input_size_y').value;
-
-        var select_t = document.getElementById('select_thick');
-        var Material_t = select_t.options[select_t.selectedIndex].value;
-
-        var select_type = document.getElementById('select_material_type');
-        var Material_Type_name = select_type.options[select_type.selectedIndex].value;
-        var Material_count = document.getElementById('input_count').value;
-
-        // alert(Material_x);
-        // alert(Material_y);
-        // alert(Material_t);
-        // alert(Material_Type_name);
-        // alert(Material_count);
-
-
-        var Payment = FuncPayment_Version_2(Material_Type_name, Material_t, Material_x, Material_y, Material_count);
-      //  Payment =  Math.ceil(Payment / 100) * 100;
-      Payment =  Math.ceil(Payment/100) * 100;
-        var NaverPayment = Math.ceil(Payment / 100);
-        var commaValue = addComma(Payment);
-        var output_text = Material_Type_name + "/ 두께 " + Material_t + "/" + Material_x + "x" + Material_y + "/ 수량 " + Material_count + " 개의 결제금액은" +
-          "<b> " + commaValue + "</b>" + " 원 입니다.";
-
-        document.getElementById('pre_output').innerHTML = output_text;
-
-
-
-        document.getElementById('input_naverpay').value = NaverPayment;//.toLocaleString('ko-KR');  
-
-        var material_type_thick = Material_Type_name + " " + Material_t + "T";
-        var material_size = Material_x + "x" + Material_y;
-        RightTableInert(material_type_thick, material_size, NaverPayment, commaValue, Material_count);
-        SetRightTableTotal();
-
-
-        var var_time = getCurrentDate();
-        document.getElementById('right_time_text').innerHTML = var_time;
-
-        //alert(Payment);
-      } catch (error) {
-        alert(error);
-      }
-
-
-    }
-
-    function addComma(value) {
-      var num = isNumber(value);
-      if (!num) return;
-
-      // 문자열 길이가 3과 같거나 작은 경우 입력 값을 그대로 리턴
-      if (num.length <= 3) {
-        return num;
-      }
-
-      // 3단어씩 자를 반복 횟수 구하기
-      var count = Math.floor((num.length - 1) / 3);
-
-      // 결과 값을 저정할 변수
-      var result = "";
-
-      // 문자 뒤쪽에서 3개를 자르며 콤마(,) 추가
-      for (var i = 0; i < count; i++) {
-
-        // 마지막 문자(length)위치 - 3 을 하여 마지막인덱스부터 세번째 문자열 인덱스값 구하기
-        var length = num.length;
-        var strCut = num.substr(length - 3, length);
-        // 반복문을 통해 value 값은 뒤에서 부터 세자리씩 값이 리턴됨.
-
-        // 입력값 뒷쪽에서 3개의 문자열을 잘라낸 나머지 값으로 입력값 갱신
-        num = num.slice(0, length - 3);
-
-        // 콤마(,) + 신규로 자른 문자열 + 기존 결과 값
-        result = "," + strCut + result;
-      }
-
-      // 마지막으로 루프를 돌고 남아 있을 입력값(value)을 최종 결과 앞에 추가
-      result = num + result;
-
-      // 최종값 리턴
-      return result;
-    }
-
-    // 숫자 유무 판단
-    function isNumber(checkValue) {
-      checkValue = '' + checkValue;
-      if (isNaN(checkValue) || checkValue == "") {
-        alert('숫자만 입력해 주세요!!!');
-        return;
-      }
-      return checkValue;
-    }
-
-    function FuncPayment_Version_2(material_type, material_size_t, material_size_x, material_size_y, material_count) {
-
-
-      //계산수식_21_10_15
-      var iCutCost = 0; //재단비
-      var iSalePrice = 0; //판재금액
-      var iMaterialPrice = 0; // 자재비? 고정비? 
-      var dSpecific_gravity = 0; //철 비중
-      var iStaticValue = 0; // 고정금액
-      var iWeighted = 0; //가로,세로 가중치
-
-      
-      switch (material_type.trim()) {
-        case 'SS400':
-          iMaterialPrice = 3000;
-          iStaticValue = 3300;
-          iWeighted = 20;
-          dSpecific_gravity = 7.85;
-          break;
-        case 'ATOS80':
-          iMaterialPrice = 3000;
-          iStaticValue = 4000;
-          iWeighted = 20;
-          dSpecific_gravity = 7.85;
-          break;
-        case 'S45C':
-          iMaterialPrice = 3000;
-          iStaticValue = 4000;
-          iWeighted = 20;
-          dSpecific_gravity = 7.85;
-          break;
-          case 'SM490A':
-          iMaterialPrice = 3000;
-          iStaticValue = 4000;
-          iWeighted = 20;
-          dSpecific_gravity = 7.85;
-          break;
-        case 'SUS-1D':
-          iMaterialPrice = 1000;
-          iStaticValue = 13000;
-          iWeighted = 20;
-          dSpecific_gravity = 7.93;
-          break;
-        case 'SUS-2B':
-          iMaterialPrice = 1000;
-          iStaticValue = 13000;
-          iWeighted = 20;
-          dSpecific_gravity = 7.93;
-          break;
-        case 'SUS-HL':
-          iMaterialPrice = 1000;
-          iStaticValue = 14000;
-          iWeighted = 20;
-          dSpecific_gravity = 7.93;
-          break;
-        case 'SUS-PL':
-          iMaterialPrice = 1000;
-          iStaticValue = 15000;
-          iWeighted = 20;
-          dSpecific_gravity = 7.93;
-          break;
-        case 'AL':
-          iMaterialPrice = 1000;
-          iStaticValue = 20000;
-          iWeighted = 20;
-          dSpecific_gravity = 2.75;
-          break;
-        case 'AL-CK':
-          iMaterialPrice = 1000;
-          iStaticValue = 20000;
-          iWeighted = 20;
-          dSpecific_gravity = 2.75;
-          break;
-      }
-
-      //재단비
-      iCutCost = iMaterialPrice * material_count;
-   
-
-  //자재XY 10의자리 올림 
-      material_size_x = Math.ceil(material_size_x / 100) * 100;//
-      material_size_y =  Math.ceil(material_size_y / 100) * 100;//
-       //판재금액 
-      iSalePrice = (material_size_x +iWeighted) * (material_size_y +iWeighted) * material_size_t * dSpecific_gravity * material_count / 1000000 * iStaticValue;
-    
-      //판재금액 10의자리 올림
-      iSalePrice= Math.ceil(iSalePrice/100) * 100;
-   
- 
-      //판재금액 기준 500000원 이상
-      if(iSalePrice >= 500000)
-      {
-
-        iCutCost = 0
-      }
-
-      return iCutCost + iSalePrice;
-    }
-
-    function FuncPayment(material_type, material_size_t, material_size_x, material_size_y, material_count) {
-
-      var iCutCost = 0; //재단비
-      var iSalePrice = 0; //판재금액
-      var iMaterialPrice = 0; // 자재비? 고정비? 
-      var dSpecific_gravity = 0; //철 비중
-      var iStaticValue = 0; // 고정금액
-      var iWeighted = 0; //가로,세로 가중치
-
-
-      switch (material_type.trim()) {
-        case 'SS400':
-          iMaterialPrice = 3000;
-          iStaticValue = 3300;
-          iWeighted = 20;
-          dSpecific_gravity = 7.85;
-          break;
-        case 'ATOS80':
-          iMaterialPrice = 3000;
-          iStaticValue = 3500;
-          iWeighted = 20;
-          dSpecific_gravity = 7.85;
-          break;
-        case 'S45C':
-          iMaterialPrice = 3000;
-          iStaticValue = 3500;
-          iWeighted = 20;
-          dSpecific_gravity = 7.85;
-          break;
-        case 'SUS-1D':
-          iMaterialPrice = 1000;
-          iStaticValue = 13000;
-          iWeighted = 20;
-          dSpecific_gravity = 7.93;
-          break;
-        case 'SUS-2B':
-          iMaterialPrice = 1000;
-          iStaticValue = 13000;
-          iWeighted = 20;
-          dSpecific_gravity = 7.93;
-          break;
-        case 'SUS-HL':
-          iMaterialPrice = 1000;
-          iStaticValue = 14000;
-          iWeighted = 20;
-          dSpecific_gravity = 7.93;
-          break;
-        case 'SUS-PL':
-          iMaterialPrice = 1000;
-          iStaticValue = 15000;
-          iWeighted = 20;
-          dSpecific_gravity = 7.93;
-          break;
-        case 'AL':
-          break;
-          iMaterialPrice = 1000;
-          iStaticValue = 19000;
-          iWeighted = 20;
-          dSpecific_gravity = 2.75;
-        case 'AL-CK':
-          iMaterialPrice = 1000;
-          iStaticValue = 19000;
-          iWeighted = 20;
-          dSpecific_gravity = 2.75;
-          break;
-      }
-
-      iCutCost = iMaterialPrice * material_count;
-
-      // alert("material_size_x : " + material_size_x +"\n"+
-      // "material_size_y : " + material_size_y + "\n"+
-      // "material_size_t : " + material_size_t + "\n"+
-      // "material_count : " + material_count + "\n"+
-      // "iWeighted : " + iWeighted + "\n"+
-      // "dSpecific_gravity : " + dSpecific_gravity + "\n"+ "\n"+
-      // "iStaticValue : " + iStaticValue + "\n");
-
-
-      material_size_x = parseInt(material_size_x) + iWeighted;
-      material_size_y = parseInt(material_size_y) + iWeighted;
-      iSalePrice = material_size_x * material_size_y * material_size_t * dSpecific_gravity * material_count / 1000000 * iStaticValue;
-
-
-
-    
-      return iCutCost + iSalePrice;
-    }
-
-    var insertRowNum = 0;
-    function RightTableInert(material_type, material_size, naver_count, payment, material_count) {
-      var table = document.getElementById("Table_Right");
-      var rowCount = table.rows.length;
-      // var row = table.insertRow(rowCount);
-
-      var row = table.insertRow(rowCount - 1);
-      var cell1 = row.insertCell(0);
-      var cell2 = row.insertCell(1);
-      var cell3 = row.insertCell(2);
-      var cell4 = row.insertCell(3);
-      var cell5 = row.insertCell(4);
-      var cell6 = row.insertCell(5);
-      var cell7 = row.insertCell(6);
-      var cell8 = row.insertCell(7);
-      var cell9 = row.insertCell(8);
-      cell1.innerHTML = rowCount - 1;
-      cell2.innerHTML = material_type;//'<th  width="50" min="0" step="1" value = "'.concat(material_type , '" />');
-      cell3.innerHTML = material_size;//'<th  width="50" min="0" step="1" value = "'.concat(material_size , '" />');
-      cell4.innerHTML = material_count;//'<th  width="50" min="0" step="1" value = "'.concat(naver_count,'" />');
-      cell5.innerHTML = "EA";// naver_count;
-      cell6.innerHTML = Math.ceil(parseInt(payment.replace(",", "")) / material_count);//"EA";// naver_count;
-      cell7.innerHTML = payment;
-      cell8.innerHTML = naver_count;
-
-      cell9.innerHTML = '<td><button style = "background-color: gray; height: 30px;width: 10px; font-size: 10px;" onclick="deleteRow(this)">제거</button>'
-    }
-
-    function LeftTableInert(material_type, material_size, naver_count) {
-      var table = document.getElementById("Table_Left");
-      var rowCount = table.rows.length;
-      // var row = table.insertRow(rowCount);
-      var row = table.insertRow(-1);
-      var cell1 = row.insertCell(0);
-      var cell2 = row.insertCell(1);
-      var cell3 = row.insertCell(2);
-
-      cell1.innerHTML = material_type;//'<th  width="50" min="0" step="1" value = "'.concat(material_type , '" />');
-      cell2.innerHTML = material_size;//'<th  width="50" min="0" step="1" value = "'.concat(material_size , '" />');
-      cell3.innerHTML = naver_count;//'<th  width="50" min="0" step="1" value = "'.concat(naver_count,'" />');
-    }
-
-    
-    function myFunction() {
-      var table = document.getElementById("myTable");
-      var rowCount = table.rows.length;
-      //var row = table.insertRow(rowCount);
-      var row = table.insertRow(-1);
-      var cell1 = row.insertCell(0);
-      var cell2 = row.insertCell(1);
-      var cell3 = row.insertCell(2);
-      var cell4 = row.insertCell(3);
-      var cell5 = row.insertCell(4);
-      var cell6 = row.insertCell(5);
-
-      //@@ 재질 입력 란
-      var var_select_value = "<option value='NONE'>재질을 선택해주세요.</option>" +
-        "<option value='SS400'> SS400</option>" +
-        "<option value='ATOS80'>ATOS80</option>" +
-        "<option value='S45C'>S45C</option>" +
-        "<option value='SM490A'>SM490A</option>" +
-        "<option value='SUS-1D'>SUS-1D</option>" +
-        "<option value='SUS-2B'>SUS-2B</option>" +
-        "<option value='SUS-HL'>SUS-HL</option>" +
-        "<option value='SUS-PL'>SUS-PL</option>" +
-        "<option value='AL'>AL</option>" +
-        "<option value='AL-CK'>AL-CK</option>";
-
-
-      cell1.innerHTML = "<select onchange=\"doSomething(this);\">" +
-        var_select_value
-      "</select>";
-      // cell2.innerHTML = '<input type="number"  width="50" min="0" step="1"/>';
-      // cell3.innerHTML = '<input type="number"  width="50" min="0" step="1"/>';
-      // cell4.innerHTML = '<input type="number"  width="50" min="0" step="1"/>';
-      cell3.innerHTML = '<input type="number"  width="50" min="0" step="1"/>';
-      cell4.innerHTML = '<input type="number"  width="50" min="0" step="1"/>';
-
-      cell5.innerHTML = '<input type="number"  width="50" min="0" step="1"/>';
-      cell6.innerHTML = '<td><button onclick="deleteRow(this)">제거</button>'
-
-    }
-    function deleteRow(el) {
-
-      // Get the row candidate for deletion
-      var row = el.parentNode.parentNode;
-
-      // Get last checked checkbox row, if there is one
-      var table = row.parentNode.parentNode;
-      var cbs = table.querySelectorAll('input:checked');
-      var cbRow = cbs.length ? cbs[cbs.length - 1].parentNode.parentNode : null;
-
-      // If the row to be deleted is the same as the last checked checkbox row
-      // don't delete it
-      if (row === cbRow) {
-        alert("Can't touch this...");
-
-        // Otherwise, delete it
-      } else {
-        row.parentNode.removeChild(row);
-      }
-
-      SetRightTableTotal();
-    }
-  </script>
-</body>
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
-  <script>
-  //공통
-  // 참고 출처 : https://redstapler.co/sheetjs-tutorial-create-xlsx/
-  function s2ab(s) { 
-      var buf = new ArrayBuffer(s.length); //convert s to arrayBuffer
-      var view = new Uint8Array(buf);  //create uint8array as viewer
-      for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF; //convert to octet
-      return buf;    
-  }
-
-  $(document).ready(function() { 
-      $("#excelFileExport").click(function(){
-        downImg();
-          //exportExcel();
-      });
+    <section class="below" aria-label="유의사항"><div class="below-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 11v6m0-10h.01"/></svg><div><strong>유의사항</strong><p>본 계산기는 <b>사각(직사각형) 판재 절단</b>의 예상 금액 확인용입니다. 비정형 형상 절단, 절곡, 추가 가공 및 별도 도면 검토가 필요한 제품은 네이버 톡톡 등으로 상담해 주세요. 최종 주문금액은 제작 내용 및 배송비에 따라 달라질 수 있습니다.</p><p class="material-caution">※ 표기되지 않는 재질·두께는 문의해 주세요.</p>
+<p class="final-caution">※ 소재·재고 및 가공 난이도에 따라 실제 제작 가능 여부와 금액이 달라질 수 있습니다.</p></div></div></section>
+  </main>
+  <footer class="footer"><div class="wrap"><b>LASER MARKET · 레이저 마켓</b><span>© LASER MARKET. 사각 절단 셀프 견적 서비스</span></div></footer>
+  <section id="print-quote" aria-label="견적서 출력용"><h2>레이저 마켓 견적서</h2><div class="print-meta">발행일: <span id="print-date"></span></div><div class="supplier-print"><div class="supplier-print-name">공급자</div><div class="supplier-print-detail">등 록 번 호 : 533-06-01928<br>상 호 : 레이저 마켓&nbsp;&nbsp; 성명 : 조민영<br>T.(063) 291 - 3000 &nbsp; F:214 - 3000<br>E-mail : lasermarket11@gmail.com</div></div><table><thead><tr><th>No</th><th>재질/두께</th><th>규격(mm)</th><th>수량</th><th>단가</th><th>공급가액</th><th>네이버 주문 수량</th></tr></thead><tbody id="print-rows"></tbody></table><div class="print-total" id="print-total"></div><p class="print-meta">본 견적은 사각 절단 예상 금액이며 배송비 및 추가 가공 등은 별도입니다. 실제 제작 조건에 따라 금액이 변경될 수 있습니다.</p></section>
+<script>
+  'use strict';
+  const APP_VERSION='2026.11.25-R5';
+  // 로딩 및 스크립트 오류를 눈에 보이게 표시합니다.
+  window.addEventListener('error', function (ev) {
+    const el=document.getElementById('calculator-status');
+    if(el) {el.textContent='⚠ 계산기 오류: 새로고침 후에도 계속되면 고객센터로 문의해 주세요. ('+APP_VERSION+')';el.classList.add('is-error');}
   });
-
-
-  
-
-  var excelHandler = {
-          getExcelFileName : function(){
-              return 'table-test.xlsx';
-          },
-          getSheetName : function(){
-              return 'Table Test Sheet';
-          },
-          getExcelData : function(){
-              return document.getElementById('tableData'); 
-          },
-          getWorksheet : function(){
-              return XLSX.utils.table_to_sheet(this.getExcelData());
-          }
+  // 기존 html/index.html의 소재·두께 목록 및 FuncPayment_Version_2 가격 계수를 보존했습니다.
+  // 이전 요청에 따라 실제 제작 수량 1개당 1,000원 추가 비용을 유지합니다.
+  const THICKNESS = {
+    SS400:[1.6,2,3,3.2,4,4.5,6,9,12,16],
+    ATOS80:[3.2,4.5,6,8,10,12],
+    S45C:[12], SM490A:[19],
+    'SUS-1D':[3,4,5,6,8,12],
+    'SUS-2B':[1,1.2,1.5,2],
+    'SUS-HL':[1,1.5,2], 'SUS-PL':[1,1.5,2],
+    AL:[2,3], 'AL-CK':[2]
+  };
+  const PRICE_RULES={
+    SS400:{cut:3000,fixed:3300,density:7.85},
+    ATOS80:{cut:3000,fixed:4000,density:7.85},
+    S45C:{cut:3000,fixed:4000,density:7.85},
+    SM490A:{cut:3000,fixed:4000,density:7.85},
+    'SUS-1D':{cut:1000,fixed:13000,density:7.93},
+    'SUS-2B':{cut:1000,fixed:13000,density:7.93},
+    'SUS-HL':{cut:1000,fixed:14000,density:7.93},
+    'SUS-PL':{cut:1000,fixed:15000,density:7.93},
+    AL:{cut:1000,fixed:20000,density:2.75},
+    'AL-CK':{cut:1000,fixed:20000,density:2.75}
+  };
+  const $=id=>document.getElementById(id);
+  const won=n=>Number(n).toLocaleString('ko-KR');
+  const items=[];
+  let nextId=1;
+  function calculate(material,thickness,width,height,quantity){
+    const rule=PRICE_RULES[material];
+    if(!rule) throw Error('지원하지 않는 재질입니다.');
+    const x=Math.ceil(width/100)*100;
+    const y=Math.ceil(height/100)*100;
+    let platePrice=(x+20)*(y+20)*thickness*rule.density*quantity/1000000*rule.fixed;
+    platePrice=Math.ceil(platePrice/100)*100;
+    const cutPrice=platePrice>=500000?0:rule.cut*quantity;
+    const additionalPrice=quantity*1000;
+    const amount=Math.ceil((platePrice+cutPrice+additionalPrice)/100)*100;
+    return {amount, naver:amount/100, unit:Math.ceil(amount/quantity),platePrice,cutPrice,additionalPrice};
   }
-
-
-
-  
-
-  function downImg(){
-
-if(iTotalPay < 10000)
-{
-  alert("최소 주문 금액은 10,000\\ 입니다.");
-  
-}
-
-      html2canvas($("#right_main")[0]).then(function(canvas){
-          var myImage = canvas.toDataURL();
-
-          var date = new Date();
-        var year = date.getFullYear().toString();
-
-        var month = date.getMonth() + 1;
-        month = month < 10 ? '0' + month.toString() : month.toString();
-
-        var day = date.getDate();
-        day = day < 10 ? '0' + day.toString() : day.toString();
-
-        var hour = date.getHours();
-        hour = hour < 10 ? '0' + hour.toString() : hour.toString();
-
-        var minites = date.getMinutes();
-        minites = minites < 10 ? '0' + minites.toString() : minites.toString();
-
-        var seconds = date.getSeconds();
-        seconds = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
-
-        var str_time  =year + month + day + hour + minites;
-
-            //var str_time = `${year}_ ${date}` + `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`; 
-
-     
-          downloadURI(myImage, str_time+"_레이저마켓_견적서.png") 
-      });
+  let lastAddedSignature='';
+  function currentInputs(){
+    const material=$('material').value,thickness=Number($('thickness').value);
+    const width=Number($('width').value),height=Number($('height').value),quantity=Number($('quantity').value);
+    const valid=material in THICKNESS && THICKNESS[material].includes(thickness) &&
+      [width,height,quantity].every(v=>Number.isSafeInteger(v)&&v>0) && quantity<=100000;
+    return {valid,material,thickness,width,height,quantity,
+      signature:[material,thickness,width,height,quantity].join('|')};
   }
-
-  function downloadURI(uri, name){
-      var link = document.createElement("a")
-      link.download = name;
-      link.href = uri;
-      document.body.appendChild(link);
-      link.click();
-  }
-
- 
- 
-  function exportExcel(){ 
-    alert("출력");
-    try
-    {
-
-      // var table2excel = new Table2Excel();
-      // table2excel.expert(document.querySelectorAll("#Table_Right"));
-      var wb = XLSX.utils.table_to_book(document.getElementById('Table_Right'), {sheet:"견적",raw:true});
-XLSX.writeFile(wb, ('레이저마켓견적파일.xlsx'));
-    }catch(error)
-    {
-      alert(error);
+  function updateLivePreview(){
+    const input=currentInputs();
+    if(!input.valid){
+      $('draft-caption').textContent='재질·두께·가로·세로·수량을 입력해 주세요.';
+      $('draft-money').textContent='—';
+      $('draft-hint').textContent='입력 완료 시 예상 금액이 자동으로 표시됩니다.';
+      $('draft-hint').classList.remove('is-complete');
+      return;
     }
-    
-      
+    const data=calculate(input.material,input.thickness,input.width,input.height,input.quantity);
+    $('draft-caption').textContent=`${input.material} ${input.thickness}T · ${won(input.width)} × ${won(input.height)}mm · ${won(input.quantity)}개 | 네이버 수량 ${won(data.naver)}개`;
+    $('draft-money').textContent=`${won(data.amount)}원`;
+    const added=input.signature===lastAddedSignature;
+    $('draft-hint').textContent=added?'✓ 마지막으로 입력한 규격이 견적서에 추가되었습니다. 아래 목록과 합계를 확인하세요.':'이 금액은 미리보기입니다. 견적서에 반영하려면 ‘견적 계산 후 항목 추가’를 눌러 주세요.';
+    $('draft-hint').classList.toggle('is-complete',added);
   }
-  $(function() {
-                $("#Table_Right").table2excel({
-                    name: "Excel table",
-                    filename: "excel table",
-                    fileext: ".xls",
-                    exclude_img: true,
-                    exclude_links: true,
-                    exclude_inputs: true
-                });
-            });
-  </script>
-
-
-
+  function onFormInput(){
+    $('form-error').textContent='';
+    $('form-success').textContent='';
+    $('added-alert').classList.remove('is-visible');
+    updateLivePreview();
+  }
+  function populateThickness(){
+    const type=$('material').value, sel=$('thickness');
+    sel.replaceChildren();
+    const options=THICKNESS[type]||[];
+    if(!options.length){sel.disabled=true;sel.add(new Option('재질을 먼저 선택하세요',''));return;}
+    sel.disabled=false;
+    options.forEach(t=>sel.add(new Option(`${t}T`,String(t))));
+  }
+  function inputNumber(id,minimum=1){
+    const el=$(id), n=Number(el.value);
+    if(!el.value || !Number.isFinite(n) || !Number.isInteger(n) || n<minimum) throw Error(`${el.previousElementSibling?.textContent || el.id}에 ${minimum} 이상의 정수를 입력해 주세요.`);
+    return n;
+  }
+  function render(){
+    const tbody=$('quote-rows');tbody.textContent='';$('mobile-quote-list').textContent='';
+    $('added-count').textContent=items.length+'건';
+    $('empty-state').hidden=items.length>0;
+    const total=items.reduce((a,b)=>a+b.amount,0);
+    const count=items.reduce((a,b)=>a+b.quantity,0);
+    const naver=items.reduce((a,b)=>a+b.naver,0);
+    $('total-price').innerHTML=`${won(total)}<span class="unit">원</span>`;
+    $('total-count').innerHTML=`${won(count)}<span class="unit">개</span>`;
+    $('total-naver').innerHTML=`${won(naver)}<span class="unit">개</span>`;
+    for(let i=0;i<items.length;i++){
+      const item=items[i], tr=document.createElement('tr');
+      const cells=[String(i+1),`${item.material} ${item.thickness}T`,`${won(item.width)} × ${won(item.height)}`,`${won(item.quantity)}개`,`${won(item.unit)}원`,`${won(item.amount)}원`,won(item.naver)];
+      cells.forEach((str,j)=>{const td=tr.insertCell();td.textContent=str;if(j===1) td.className='t-strong';if(j===5)td.className='monetary';});
+      const td=tr.insertCell(), button=document.createElement('button'); button.type='button';button.className='remove';button.textContent='삭제';button.setAttribute('aria-label',`${i+1}번 견적 항목 삭제`);button.addEventListener('click',()=>{items.splice(i,1);lastAddedSignature='';render();updateLivePreview();});td.append(button);tbody.append(tr);
+      const card=document.createElement('div');card.className='mobile-quote';
+      const top=document.createElement('div');top.className='mobile-quote-title';
+      const cardTitle=document.createElement('strong');cardTitle.textContent=`${i+1}. ${item.material} ${item.thickness}T`;
+      const cardRemove=button.cloneNode(true);cardRemove.addEventListener('click',()=>{items.splice(i,1);lastAddedSignature='';render();updateLivePreview();});
+      top.append(cardTitle,cardRemove);card.append(top);
+      const grid=document.createElement('div');grid.className='mobile-quote-grid';
+      [['규격(mm)',`${won(item.width)} × ${won(item.height)}`],['제작 수량',`${won(item.quantity)}개`],['예상 금액',`${won(item.amount)}원`],['네이버 주문 수량',`${won(item.naver)}개`]].forEach(([key,value],k)=>{
+        const field=document.createElement('div');if(k===2)field.className='amount';const lbl=document.createElement('small'), val=document.createElement('b');lbl.textContent=key;val.textContent=value;field.append(lbl,val);grid.append(field);
+      });
+      card.append(grid);$('mobile-quote-list').append(card);
+    }
+    updatePrint();
+  }
+  function updatePrint(){
+    const rows=$('print-rows');rows.replaceChildren();
+    items.forEach((item,i)=>{const tr=rows.insertRow();[i+1,`${item.material} ${item.thickness}T`,`${item.width} × ${item.height}`,won(item.quantity),won(item.unit),won(item.amount),won(item.naver)].forEach(text=>{const td=tr.insertCell();td.textContent=text;});});
+    const sum=items.reduce((a,b)=>a+b.amount,0),qty=items.reduce((a,b)=>a+b.quantity,0),nav=items.reduce((a,b)=>a+b.naver,0);
+    $('print-total').textContent=`총 예상 금액 ${won(sum)}원   |   실제 제작 ${won(qty)}개   |   네이버 결제 수량 ${won(nav)}개`;
+    $('print-date').textContent=new Date().toLocaleString('ko-KR');
+  }
+  function downloadImage(){
+    if(!items.length){alert('먼저 견적을 계산해 주세요.');return;}
+    // 외부 라이브러리 없이 견적서를 이미지로 저장하여 GitHub Pages에서 그대로 사용할 수 있습니다.
+    const W=1200,pad=66,cols=[66,128,324,500,626,760,950,1134];
+    const y0=376;
+    const height=y0+57+items.length*62+180;
+    const canvas=document.createElement('canvas');canvas.width=W;canvas.height=height;
+    const ctx=canvas.getContext('2d');
+    ctx.fillStyle='#fff';ctx.fillRect(0,0,W,height);
+    ctx.fillStyle='#0b2b54';ctx.fillRect(0,0,W,18);
+    ctx.fillStyle='#0b2b54';ctx.font='bold 37px "Malgun Gothic",sans-serif';ctx.fillText('레이저 마켓 | 사각 절단 예상 견적서',pad,90);
+    // 공급자 정보는 화면 견적서와 동일하게 PNG 저장에도 포함됩니다.
+    ctx.fillStyle='#f0f6ff';ctx.fillRect(pad,115,W-2*pad,201);
+    ctx.fillStyle='#dee9f7';ctx.fillRect(pad,115,156,201);
+    ctx.fillStyle='#163e74';ctx.font='bold 26px "Malgun Gothic",sans-serif';ctx.fillText('공급자',pad+38,222);
+    ctx.fillStyle='#304864';ctx.font='21px "Malgun Gothic",sans-serif';
+    const sx=pad+180;
+    ctx.fillText('등록번호 : 533-06-01928',sx,157);
+    ctx.fillText('상호 : 레이저 마켓    성명 : 조민영',sx,199);
+    ctx.fillText('T.(063) 291 - 3000    F:214 - 3000',sx,241);
+    ctx.fillText('E-mail : lasermarket11@gmail.com',sx,283);
+    ctx.fillStyle='#4e657e';ctx.font='18px "Malgun Gothic",sans-serif';
+    ctx.fillText(`작성일 : ${new Date().toLocaleString('ko-KR')}`,pad,354);
+    ctx.fillStyle='#edf5ff';ctx.fillRect(pad,y0,W-2*pad,57);
+    const heads=['No','재질 / 두께','규격(mm)','수량','단가(원)','금액(원)','네이버 수량'];
+    ctx.textBaseline='middle';ctx.fillStyle='#244267';ctx.font='bold 20px "Malgun Gothic",sans-serif';
+    const lefts=[cols[0]+8,cols[1]+8,cols[2]+8,cols[3]+8,cols[4]+8,cols[5]+8,cols[6]+8];
+    heads.forEach((h,i)=>ctx.fillText(h,lefts[i],y0+28));
+    items.forEach((item,i)=>{
+      const y=y0+57+i*62;
+      if(i%2){ctx.fillStyle='#f9fbfe';ctx.fillRect(pad,y,W-2*pad,62);}
+      const fields=[String(i+1),`${item.material} ${item.thickness}T`,`${item.width}×${item.height}`,String(item.quantity),won(item.unit),won(item.amount),won(item.naver)];
+      ctx.fillStyle='#273a56';ctx.font='19px "Malgun Gothic",sans-serif';fields.forEach((v,j)=>ctx.fillText(v,lefts[j],y+31));
+      ctx.strokeStyle='#e4ebf3';ctx.beginPath();ctx.moveTo(pad,y+62);ctx.lineTo(W-pad,y+62);ctx.stroke();
+    });
+    const yTotal=y0+57+items.length*62+19, sum=items.reduce((a,b)=>a+b.amount,0),qty=items.reduce((a,b)=>a+b.quantity,0),nav=items.reduce((a,b)=>a+b.naver,0);
+    ctx.fillStyle='#0b2b54';ctx.font='bold 28px "Malgun Gothic",sans-serif';ctx.fillText(`총 예상 금액  ${won(sum)}원`,pad+8,yTotal+27);
+    ctx.fillStyle='#1767c8';ctx.font='bold 20px "Malgun Gothic",sans-serif';ctx.fillText(`실제 제작 ${won(qty)}개  /  네이버 결제 수량 ${won(nav)}개`,pad+8,yTotal+67);
+    ctx.fillStyle='#6c7b8e';ctx.font='17px "Malgun Gothic",sans-serif';ctx.fillText('※ 사각 절단 예상금액입니다. 별도 가공 및 배송비 등은 실제 견적과 다를 수 있습니다.',pad+8,yTotal+112);
+    const a=document.createElement('a');a.href=canvas.toDataURL('image/png');a.download=`레이저마켓_셀프견적_${new Date().toISOString().slice(0,10)}.png`;document.body.append(a);a.click();a.remove();
+  }
+  $('material').addEventListener('change',()=>{populateThickness();onFormInput();});
+  ['thickness','width','height','quantity'].forEach(id=>{ $(id).addEventListener('input',onFormInput); $(id).addEventListener('change',onFormInput); });
+  $('qty-minus').addEventListener('click',()=>{$('quantity').value=Math.max(1,(parseInt($('quantity').value,10)||1)-1);onFormInput();});
+  $('qty-plus').addEventListener('click',()=>{$('quantity').value=Math.min(100000,(parseInt($('quantity').value,10)||0)+1);onFormInput();});
+  // 버튼 클릭을 직접 연결해 일부 브라우저/모바일의 form submit 차이를 방지합니다.
+  function addQuoteItem(event){
+    if(event&&event.preventDefault) event.preventDefault();
+    $('form-error').textContent='';
+    $('form-success').textContent='';
+    try{
+      const material=$('material').value, thickness=Number($('thickness').value);
+      if(!material||!THICKNESS[material]) throw Error('재질을 선택해 주세요.');
+      if(!THICKNESS[material].includes(thickness)) throw Error('두께를 선택해 주세요.');
+      const width=inputNumber('width'),height=inputNumber('height'),quantity=inputNumber('quantity');
+      if(quantity>100000) throw Error('수량은 100,000개 이하로 입력해 주세요.');
+      const cal=calculate(material,thickness,width,height,quantity);
+      if(!Number.isFinite(cal.amount)||cal.amount<=0) throw Error('계산 결과를 확인할 수 없습니다. 입력 값을 확인해 주세요.');
+      const data={id:nextId++,material,thickness,width,height,quantity,...cal};
+      items.push(data);
+      try{render();}catch(renderError){items.pop();throw renderError;}
+      // 화면의 데이터 행도 실제로 추가됐는지 확인합니다.
+      if($('quote-rows').rows.length!==items.length){throw Error('견적서 목록을 표시하지 못했습니다. 페이지를 새로고침해 주세요.');}
+      lastAddedSignature=[material,thickness,width,height,quantity].join('|');
+      updateLivePreview();
+      $('form-success').textContent='✓ '+items.length+'건의 견적이 등록되었습니다.';
+      $('calculator-status').textContent='✓ 계산기 정상 실행 중 · 버전 '+APP_VERSION;
+      $('calculator-status').classList.remove('is-error');
+      $('calculator-status').classList.add('is-ready');
+      const msg=`✓ ${material} ${thickness}T / ${won(width)}×${won(height)}mm / ${won(quantity)}개가 추가되었습니다. (총 ${items.length}건 · ${won(items.reduce((sum,item)=>sum+item.amount,0))}원)`;
+      $('added-alert').textContent=msg;
+      $('added-alert').classList.add('is-visible');
+      if(window.matchMedia&&window.matchMedia('(max-width:900px)').matches){
+        $('results').scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    }catch(e){
+      const message=e&&e.message?e.message:'견적서 항목을 추가하는 중 오류가 발생했습니다.';
+      $('form-error').textContent='⚠ '+message;
+      $('calculator-status').textContent='계산 중 오류가 발생했습니다 · '+APP_VERSION;
+      $('calculator-status').classList.add('is-error');
+      $('added-alert').classList.remove('is-visible');
+      console.error('레이저 마켓 견적서 추가 오류:',e);
+    }
+  }
+  $('add-quote-btn').addEventListener('click',addQuoteItem);
+  $('estimate-form').addEventListener('submit',addQuoteItem);
+  $('download-btn').addEventListener('click',downloadImage);
+  $('print-btn').addEventListener('click',()=>{if(!items.length){alert('먼저 견적을 계산해 주세요.');return;}updatePrint();window.print();});
+  render();
+  updateLivePreview();
+  $('calculator-status').textContent='✓ 계산기 정상 실행 중 · 버전 '+APP_VERSION;
+  $('calculator-status').classList.add('is-ready');
+</script>
+</body>
 </html>
