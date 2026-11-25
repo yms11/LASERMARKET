@@ -523,12 +523,12 @@ button:hover:before,button:hover:after{
 
             if (c == 6) {
               // numberWithCommas(table.rows[r].cells[c].innerHTML);
-              total_payment += parseInt(table.rows[r].cells[c].innerHTML.replace(",", ""));
+              total_payment += parseInt(table.rows[r].cells[c].innerHTML.replace(/,/g, ""));
               //alert(total_payment);
             }
             if (c == 5) {
               // numberWithCommas(table.rows[r].cells[c].innerHTML);
-              product_price += parseInt(table.rows[r].cells[c].innerHTML.replace(",", ""));
+              product_price += parseInt(table.rows[r].cells[c].innerHTML.replace(/,/g, ""));
               //alert(total_payment);
             }
 
@@ -1086,7 +1086,10 @@ break;
         iCutCost = 0
       }
 
-      return iCutCost + iSalePrice;
+      // 수량별 추가 금액: 실제 제작 수량 1개당 1,000원씩 추가
+      // (네이버의 100원 결제 수량이 아니라 입력한 실제 제작 수량 기준)
+      var iQuantityAdditionalCost = Number(material_count) * 1000;
+      return iCutCost + iSalePrice + iQuantityAdditionalCost;
     }
 
     function FuncPayment(material_type, material_size_t, material_size_x, material_size_y, material_count) {
@@ -1198,7 +1201,7 @@ break;
       cell3.innerHTML = material_size;//'<th  width="50" min="0" step="1" value = "'.concat(material_size , '" />');
       cell4.innerHTML = material_count;//'<th  width="50" min="0" step="1" value = "'.concat(naver_count,'" />');
       cell5.innerHTML = "EA";// naver_count;
-      cell6.innerHTML = Math.ceil(parseInt(payment.replace(",", "")) / material_count);//"EA";// naver_count;
+      cell6.innerHTML = Math.ceil(parseInt(payment.replace(/,/g, "")) / material_count);//"EA";// naver_count;
       cell7.innerHTML = payment;
       cell8.innerHTML = naver_count;
 
