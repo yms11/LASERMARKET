@@ -38,12 +38,18 @@
     .quantity-step{display:flex;width:100%;border:1px solid #d4dfeb;border-radius:10px;height:52px;overflow:hidden}.quantity-step button{border:0;background:#f4f8fc;width:48px;flex:0 0 48px;color:#264d7e;font-size:24px;transition:background .2s}.quantity-step button:hover{background:#e0eeff}.quantity-step input{text-align:center;border:0;height:50px;border-radius:0;min-width:0;box-shadow:none!important;appearance:textfield}.quantity-step input::-webkit-outer-spin-button,.quantity-step input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
     .hint{margin-top:17px;display:flex;align-items:flex-start;gap:9px;padding:13px 14px;border-radius:11px;background:#f2f7fe;font-size:12px;color:#516783;line-height:1.7}.hint svg{height:17px;width:17px;flex:0 0 17px;margin-top:1px;color:#277de3}
     .calc-button{width:100%;margin-top:20px;border:0;background:linear-gradient(95deg,#1566db,#0c4da7);color:white;height:56px;display:flex;align-items:center;justify-content:center;gap:10px;border-radius:12px;font-weight:850;font-size:16px;box-shadow:0 10px 18px rgba(16,95,208,.19);transition:transform .15s,box-shadow .15s}.calc-button:hover{transform:translateY(-1px);box-shadow:0 12px 21px rgba(16,95,208,.24)}.calc-button svg{width:20px;height:20px}
-    .form-error{min-height:19px;margin:10px 0 0;color:#d52a44;font-size:12px;font-weight:650}.rule-panel{border-top:1px solid var(--line);padding:17px 28px 20px;background:#fcfdff}.rule-panel summary{cursor:pointer;color:#536883;font-size:12px;font-weight:800;list-style:none}.rule-panel summary::before{content:'▸';margin-right:7px}.rule-panel details[open] summary::before{content:'▾'}.rule-panel ul{padding-left:18px;margin:12px 0 0;font-size:12px;color:#748197;line-height:1.8}
+    .form-error{min-height:19px;margin:10px 0 0;color:#d52a44;font-size:12px;font-weight:650}
+    /* 공급자 정보: 화면 / 이미지 견적서 / 인쇄 견적서 공통 내용 */
+    .supplier-card{display:grid;grid-template-columns:100px minmax(0,1fr);gap:17px;align-items:start;margin:18px 24px 0;padding:17px 20px;background:#f8fbff;border:1px solid #dae7f7;border-radius:13px}
+    .supplier-heading{font-weight:900;color:#0b3c78;font-size:15px;padding-top:2px}
+    .supplier-detail{display:grid;grid-template-columns:1fr 1fr;column-gap:20px;row-gap:7px;font-size:12px;color:#314765;line-height:1.5}
+    .supplier-detail .label{font-size:11px;color:#7488a1;margin-right:5px;font-weight:700}
+    .supplier-detail .supplier-email{grid-column:1 / -1;overflow-wrap:anywhere}
     .result-stats{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:12px;padding:18px 24px;background:#f7faff}.stat{padding:5px 6px}.stat + .stat{border-left:1px solid #dae5f3;padding-left:21px}.stat small{display:block;color:#71829c;font-size:12px;font-weight:650}.stat strong{display:block;font-weight:900;font-size:24px;letter-spacing:-.04em;color:#162e55;margin:4px 0 0}.stat:first-child strong{font-size:30px;color:#0b5dca}.stat span.unit{font-size:15px;font-weight:750;margin-left:2px}
     .quote-table-wrap{overflow-x:auto;scrollbar-width:thin}.quote-table{width:100%;border-collapse:collapse;white-space:nowrap;text-align:left}.quote-table th{font-size:12px;color:#677b96;background:#fafbfd;border-bottom:1px solid #e5ebf4;padding:15px 11px;font-weight:800}.quote-table td{border-bottom:1px solid #eaf0f5;padding:14px 11px;color:#2b3e58;font-size:13px;font-weight:600}.quote-table td:first-child,.quote-table th:first-child{padding-left:24px}.quote-table td:last-child,.quote-table th:last-child{padding-right:24px;text-align:right}.quote-table .t-strong{color:#113968;font-weight:850}.quote-table .monetary{color:#0958c5;font-weight:850}.remove{border:0;background:#f3f6fa;color:#7c8ba0;border-radius:8px;padding:6px 9px;font-size:12px;font-weight:700}.remove:hover{background:#ffedf0;color:#c51d4d}.mobile-quote-list{display:none}.empty-state{text-align:center;padding:56px 15px 47px}.empty-state svg{width:48px;height:48px;color:#a3b8d5;}.empty-state h4{font-size:16px;margin:11px 0 4px}.empty-state p{font-size:12px;color:#8593a7;margin:0}.result-foot{padding:20px 24px 23px;border-top:1px solid var(--line)}.info-note{display:flex;align-items:flex-start;gap:10px;border-radius:11px;background:#eaf4ff;padding:12px 14px;color:#3e638d;font-size:12px;line-height:1.65}.info-note strong{color:#0c4f9d}.info-note svg{width:18px;height:18px;flex:0 0 18px;color:#1975dc;margin-top:2px}.action-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.action-row button,.action-row a{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-align:center;flex:1 1 150px;min-height:45px;padding:10px 12px;border-radius:10px;font-size:13px;font-weight:850;text-decoration:none;white-space:nowrap}.action-row svg{width:16px;height:16px}.btn-border{background:#fff;border:1px solid #cbd8e8;color:#2b4b71}.btn-border:hover{background:#f2f8ff}.btn-naver{background:var(--green);border:1px solid var(--green);color:#fff}.btn-naver:hover{background:#06b953}
-    .below{padding-bottom:50px}.below-card{border:1px solid #d9e5f4;border-radius:16px;display:flex;align-items:flex-start;gap:16px;padding:20px 23px;background:#edf5ff}.below-card svg{width:28px;height:28px;color:#1e6bd1;flex-shrink:0}.below-card strong{font-size:14px}.below-card p{font-size:12px;color:#566d8b;line-height:1.8;margin:6px 0 0}.footer{border-top:1px solid #dce6f1;padding:22px 0 28px;color:#8b9aad;font-size:11px}.footer .wrap{display:flex;justify-content:space-between;gap:10px}.footer b{color:#607796;font-size:13px;letter-spacing:.01em}
+    .below{padding-bottom:50px}.below-card{border:1px solid #d9e5f4;border-radius:16px;display:flex;align-items:flex-start;gap:16px;padding:20px 23px;background:#edf5ff}.below-card svg{width:28px;height:28px;color:#1e6bd1;flex-shrink:0}.below-card strong{font-size:14px}.below-card p{font-size:12px;color:#566d8b;line-height:1.8;margin:6px 0 0}.below-card .final-caution{color:#274d79;font-weight:700;margin-top:10px}.footer{border-top:1px solid #dce6f1;padding:22px 0 28px;color:#8b9aad;font-size:11px}.footer .wrap{display:flex;justify-content:space-between;gap:10px}.footer b{color:#607796;font-size:13px;letter-spacing:.01em}
     #print-quote{display:none}
-    @media (max-width:1100px){.columns{grid-template-columns:minmax(330px,1fr) minmax(0,1.15fr);gap:15px}.wrap{width:min(100% - 32px,1280px)}.card-head{padding:22px 20px 17px}.quote-form{padding:20px}.rule-panel{padding:16px 20px}.result-stats{padding:16px}.stat + .stat{padding-left:13px}.stat strong{font-size:21px}.stat:first-child strong{font-size:25px}.quote-table th,.quote-table td{padding:12px 9px}}
+    @media (max-width:1100px){.columns{grid-template-columns:minmax(330px,1fr) minmax(0,1.15fr);gap:15px}.wrap{width:min(100% - 32px,1280px)}.card-head{padding:22px 20px 17px}.quote-form{padding:20px}.result-stats{padding:16px}.stat + .stat{padding-left:13px}.stat strong{font-size:21px}.stat:first-child strong{font-size:25px}.quote-table th,.quote-table td{padding:12px 9px}}
     @media (max-width:900px){.columns{grid-template-columns:1fr}.blueprint{display:none}.hero-content{padding:40px 0 42px}.hero-copy{max-width:650px}.intro{padding-top:25px}.topbar{height:66px}.brand{font-size:20px}.topnote{font-size:11px}.card{border-radius:17px}.result-stats{grid-template-columns:1.5fr 1fr 1fr}.columns{margin-top:15px}}
     @media (max-width:700px){
       .quote-table{display:none}.mobile-quote-list{display:grid;gap:10px;padding:14px}
@@ -55,8 +61,26 @@
       .mobile-quote-grid b{display:block;font-size:13px;color:#263b58}
       .mobile-quote-grid .amount b{color:#0f63c9;font-size:15px}
     }
+    @media (max-width:530px){.supplier-card{grid-template-columns:1fr;gap:7px;margin:13px 14px 0;padding:14px}.supplier-detail{grid-template-columns:1fr;gap:6px;font-size:12px}.supplier-detail .supplier-email{grid-column:auto}}
     @media (max-width:530px){.wrap{width:calc(100% - 26px)}.topbar{height:61px}.brand{font-size:18px}.slash i{width:10px;height:20px}.topnote{display:none}.hero-content{padding:27px 0 35px}.hero h1{font-size:30px;letter-spacing:-.055em}.hero-desc{font-size:13px}.eyebrow{font-size:11px}.hero-chips{margin-top:17px}.chip{font-size:10px}.intro h2{font-size:19px}.intro p{font-size:12px}.intro .updated{display:none}.card-head h3{font-size:17px}.fieldset{gap:14px 9px}.field label{font-size:12px}.field input,.field select{height:50px;font-size:15px;padding:0 10px}.quantity-step{height:50px}.quantity-step input{height:48px}.quantity-step button{width:38px;flex-basis:38px}.result-stats{padding:16px 12px;gap:0}.stat + .stat{padding-left:11px}.stat small{font-size:10px}.stat strong{font-size:17px}.stat:first-child strong{font-size:24px}.stat span.unit{font-size:12px}.result-foot{padding:16px}.quote-table th:first-child,.quote-table td:first-child{padding-left:15px}.footer .wrap{display:block}.footer b{display:block;margin-bottom:4px}.below-card{padding:16px;gap:10px}.below-card svg{width:22px}}
-    @media print{@page{size:A4; margin:13mm}body{background:#fff}.hero,.intro,.columns,.below,.footer{display:none!important}#print-quote{display:block;font-family:"Malgun Gothic",sans-serif;color:#111}#print-quote h2{font-size:24px;margin:12px 0 4px}#print-quote .print-meta{font-size:12px;color:#666}#print-quote table{width:100%;border-collapse:collapse;font-size:11px;margin:20px 0}#print-quote th,#print-quote td{border:1px solid #aeb6c1;padding:9px 7px}#print-quote th{background:#e9f2ff}#print-quote .print-total{text-align:right;font-size:20px;font-weight:800}}
+    @media print{@page{size:A4; margin:13mm}body{background:#fff}.hero,.intro,.columns,.below,.footer{display:none!important}#print-quote{display:block;font-family:"Malgun Gothic",sans-serif;color:#111}#print-quote h2{font-size:24px;margin:12px 0 4px}#print-quote .print-meta{font-size:12px;color:#666}#print-quote table{width:100%;border-collapse:collapse;font-size:11px;margin:20px 0}#print-quote th,#print-quote td{border:1px solid #aeb6c1;padding:9px 7px}#print-quote th{background:#e9f2ff} #print-quote .print-total{text-align:right;font-size:20px;font-weight:800}#print-quote .supplier-print{display:grid;grid-template-columns:78px 1fr;border:1px solid #b2c3d6;margin:16px 0 10px;break-inside:avoid;font-size:12px}#print-quote .supplier-print-name{padding:15px 12px;font-weight:900;background:#e9f2ff;border-right:1px solid #b2c3d6;display:flex;align-items:center;justify-content:center}#print-quote .supplier-print-detail{padding:12px 15px;line-height:1.9}#print-quote table{margin-top:12px}}
+
+    [hidden]{display:none!important}
+    .added-alert{margin:0 24px 14px;border-radius:10px;padding:11px 13px;background:#e9f8f1;border:1px solid #bfe9d1;color:#17623d;font-size:13px;font-weight:800;display:none}
+    .added-alert.is-visible{display:block}
+    .added-count{display:inline-block;font-size:12px;background:#e2efff;color:#15569c;padding:4px 8px;border-radius:999px;margin-left:7px}
+    @media(max-width:530px){.added-alert{margin:0 14px 12px}}
+    /* 입력 내용은 즉시 미리보기하고, 실제 견적서 항목은 추가 버튼으로 확정합니다. */
+    .draft-panel{margin:18px 24px 0;padding:18px 20px;border:1px solid #aed1ff;border-radius:13px;background:linear-gradient(135deg,#eef7ff,#fff);}
+    .draft-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:7px}
+    .draft-heading strong{font-size:15px;color:#0b386f}.draft-heading span{font-size:11px;color:#2365ae;background:#dceeff;padding:4px 9px;border-radius:99px;font-weight:800}
+    .draft-content{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .draft-caption{font-size:12px;color:#526b87;margin:0}.draft-money{font-size:26px;color:#0b5dca;letter-spacing:-.045em;font-weight:900;white-space:nowrap}
+    .draft-hint{margin:9px 0 0;font-size:12px;color:#466987;line-height:1.5}
+    .draft-hint.is-complete{color:#176d42;font-weight:800}
+    .calculator-status{font-size:12px;font-weight:700;color:#66809e;margin:9px 0 0}.calculator-status.is-ready{color:#176d50}.calculator-status.is-error{color:#b4213e}.form-success{color:#156d43;font-size:12px;font-weight:800;min-height:18px;margin:8px 0 0}
+    @media(max-width:530px){.draft-panel{margin:14px 14px 0;padding:14px}.draft-content{align-items:flex-start;flex-direction:column;gap:2px}.draft-money{font-size:25px}}
+    .material-caution {font-weight:700; color:#0b2b54; margin-top:10px;}
   </style>
 </head>
 <body>
@@ -79,8 +103,8 @@
   </header>
   <main class="wrap">
     <div class="intro">
-      <div><h2>제작 금액을 간편하게 확인하세요.</h2><p>견적을 계산하면 오른쪽 견적서에 항목이 추가됩니다.</p></div>
-      <span class="updated">모든 금액은 원(₩) 기준</span>
+      <div><h2>제작 금액을 간편하게 확인하세요.</h2><p>재질과 규격을 입력하면 예상 금액을 바로 확인할 수 있습니다. 버튼을 누르면 견적서에 추가됩니다.</p></div>
+      <span class="updated">모든 금액은 원(₩) 기준 · 업데이트 2026.11.25-R3</span>
     </div>
     <div class="columns">
       <section class="card" aria-labelledby="form-title">
@@ -89,6 +113,7 @@
           <div><h3 id="form-title">01. 사각 절단 규격 입력</h3><p>제작하실 판재의 정보를 입력해 주세요.</p></div>
         </div>
         <form id="estimate-form" class="quote-form" novalidate>
+          <noscript><p style="padding:14px;border-radius:8px;color:#ae2433;background:#fff0f2">이 견적 계산기는 JavaScript가 필요합니다. 브라우저 설정에서 JavaScript를 허용해 주세요.</p></noscript>
           <div class="fieldset">
             <div class="field"><label for="material">재질</label><select id="material" required><option value="" selected disabled>재질 선택</option><option value="SS400">일반 철판 (SS400)</option><option value="ATOS80">ATOS780 (ATOS80)</option><option value="S45C">S45C</option><option value="SM490A">SM490A</option><option value="SUS-1D">스테인리스 SUS-1D</option><option value="SUS-2B">스테인리스 SUS-2B</option><option value="SUS-HL">스테인리스 SUS-HL</option><option value="SUS-PL">스테인리스 SUS-PL</option><option value="AL">알루미늄 AL</option><option value="AL-CK">알루미늄 체크 AL-CK</option></select></div>
             <div class="field"><label for="thickness">두께 <small>(T = mm)</small></label><select id="thickness" required disabled><option value="">재질을 먼저 선택하세요</option></select></div>
@@ -97,13 +122,29 @@
             <div class="field" style="grid-column:1/-1"><label for="quantity">제작 수량 <small>(실제로 만들 제품 수량)</small></label><div class="quantity-step"><button type="button" id="qty-minus" aria-label="제작 수량 1개 감소">−</button><input id="quantity" type="number" value="1" min="1" max="100000" step="1" inputmode="numeric" required><button type="button" id="qty-plus" aria-label="제작 수량 1개 증가">+</button></div></div>
           </div>
           <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></svg><div>규격은 <b>가로 × 세로(mm)</b>로 입력하세요. 사각형이 아닌 형상이나 절곡 제품은 별도 상담이 필요합니다.</div></div>
-          <button class="calc-button" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h2m4 0h2m-8 4h2m4 0h2m-8 4h2m4 0h2"/></svg>견적 계산 후 항목 추가</button>
-          <p id="form-error" class="form-error" role="alert" aria-live="polite"></p>
+          <button class="calc-button" type="button" id="add-quote-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h2m4 0h2m-8 4h2m4 0h2m-8 4h2m4 0h2"/></svg>견적 계산 후 항목 추가</button>
+          <p id="calculator-status" class="calculator-status" role="status" aria-live="polite">견적 계산기를 불러오는 중입니다. 새로고침 후에도 이 문구가 계속 보이면 문의해 주세요.</p>
+          <p id="form-error" class="form-error" role="alert" aria-live="polite"></p><p id="form-success" class="form-success" role="status" aria-live="polite"></p>
         </form>
-        <div class="rule-panel"><details><summary>견적 산출 기준 안내</summary><ul><li>기존 셀프 견적 계산식을 유지하며, 판재 계산 규격은 100mm 단위로 올림 처리됩니다.</li><li>실제 제작 수량 1개당 1,000원의 추가 금액이 포함됩니다.</li><li>각 견적 항목은 네이버 결제 단가 100원 단위로 올림 처리됩니다.</li><li>소재·재고 및 가공 난이도에 따라 실제 제작 가능 여부와 금액이 달라질 수 있습니다.</li></ul></details></div>
       </section>
       <section class="card" aria-labelledby="result-title" id="results">
-        <div class="card-head"><span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3h11v18H5V6l3-3Zm0 0v4H5M9 11h7m-7 4h7m-7 4h4"/></svg></span><div><h3 id="result-title">02. 실시간 견적서</h3><p>견적 항목과 총 결제금액을 한눈에 확인하세요.</p></div></div>
+        <div class="card-head"><span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3h11v18H5V6l3-3Zm0 0v4H5M9 11h7m-7 4h7m-7 4h4"/></svg></span><div><h3 id="result-title">02. 실시간 견적서 <span id="added-count" class="added-count">0건</span></h3><p>견적 항목과 총 결제금액을 한눈에 확인하세요.</p></div></div>
+        <section id="draft-panel" class="draft-panel" aria-live="polite" aria-label="입력 중인 견적 실시간 미리보기">
+          <div class="draft-heading"><strong>입력 중인 제품 · 실시간 예상 금액</strong><span>견적서 추가 전 미리보기</span></div>
+          <div class="draft-content"><p id="draft-caption" class="draft-caption">왼쪽에서 재질과 규격을 입력하면 즉시 계산됩니다.</p><strong id="draft-money" class="draft-money">—</strong></div>
+          <p id="draft-hint" class="draft-hint">최종 견적서에 넣으려면 ‘견적 계산 후 항목 추가’를 눌러 주세요.</p>
+        </section>
+        <div id="added-alert" class="added-alert" role="status" aria-live="polite"></div>
+        <section class="supplier-card" aria-label="견적서 공급자 정보">
+          <div class="supplier-heading">공급자</div>
+          <div class="supplier-detail">
+            <div><span class="label">등록번호</span> 533-06-01928</div>
+            <div><span class="label">상호</span> 레이저 마켓 <span class="label" style="margin-left:7px">성명</span> 조민영</div>
+            <div><span class="label">전화</span> (063) 291 - 3000</div>
+            <div><span class="label">팩스</span> 214 - 3000</div>
+            <div class="supplier-email"><span class="label">이메일</span> lasermarket11@gmail.com</div>
+          </div>
+        </section>
         <div class="result-stats" aria-live="polite">
           <div class="stat"><small>총 예상 견적금액</small><strong id="total-price">0<span class="unit">원</span></strong></div>
           <div class="stat"><small>실제 제작 수량</small><strong id="total-count">0<span class="unit">개</span></strong></div>
@@ -116,12 +157,19 @@
         </div>
       </section>
     </div>
-    <section class="below" aria-label="안내사항"><div class="below-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 11v6m0-10h.01"/></svg><div><strong>이용 전 안내사항</strong><p>본 계산기는 <b>사각(직사각형) 판재 절단</b>의 예상 금액 확인용입니다. 비정형 형상 절단, 절곡, 추가 가공 및 별도 도면 검토가 필요한 제품은 네이버 톡톡 등으로 상담해 주세요. 최종 주문금액은 제작 내용 및 배송비에 따라 달라질 수 있습니다.</p></div></div></section>
+    <section class="below" aria-label="유의사항"><div class="below-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 11v6m0-10h.01"/></svg><div><strong>유의사항</strong><p>본 계산기는 <b>사각(직사각형) 판재 절단</b>의 예상 금액 확인용입니다. 비정형 형상 절단, 절곡, 추가 가공 및 별도 도면 검토가 필요한 제품은 네이버 톡톡 등으로 상담해 주세요. 최종 주문금액은 제작 내용 및 배송비에 따라 달라질 수 있습니다.</p><p class="material-caution">※ 표기되지 않는 재질·두께는 문의해 주세요.</p>
+<p class="final-caution">※ 소재·재고 및 가공 난이도에 따라 실제 제작 가능 여부와 금액이 달라질 수 있습니다.</p></div></div></section>
   </main>
   <footer class="footer"><div class="wrap"><b>LASER MARKET · 레이저 마켓</b><span>© LASER MARKET. 사각 절단 셀프 견적 서비스</span></div></footer>
-  <section id="print-quote" aria-label="견적서 출력용"><h2>레이저 마켓 견적서</h2><div class="print-meta">공급자: 레이저 마켓 · Tel 063-291-3000 · Email lasermarket11@naver.com<br>발행일: <span id="print-date"></span></div><table><thead><tr><th>No</th><th>재질/두께</th><th>규격(mm)</th><th>수량</th><th>단가</th><th>공급가액</th><th>네이버 주문 수량</th></tr></thead><tbody id="print-rows"></tbody></table><div class="print-total" id="print-total"></div><p class="print-meta">본 견적은 사각 절단 예상 금액이며 배송비 및 추가 가공 등은 별도입니다. 실제 제작 조건에 따라 금액이 변경될 수 있습니다.</p></section>
+  <section id="print-quote" aria-label="견적서 출력용"><h2>레이저 마켓 견적서</h2><div class="print-meta">발행일: <span id="print-date"></span></div><div class="supplier-print"><div class="supplier-print-name">공급자</div><div class="supplier-print-detail">등 록 번 호 : 533-06-01928<br>상 호 : 레이저 마켓&nbsp;&nbsp; 성명 : 조민영<br>T.(063) 291 - 3000 &nbsp; F:214 - 3000<br>E-mail : lasermarket11@gmail.com</div></div><table><thead><tr><th>No</th><th>재질/두께</th><th>규격(mm)</th><th>수량</th><th>단가</th><th>공급가액</th><th>네이버 주문 수량</th></tr></thead><tbody id="print-rows"></tbody></table><div class="print-total" id="print-total"></div><p class="print-meta">본 견적은 사각 절단 예상 금액이며 배송비 및 추가 가공 등은 별도입니다. 실제 제작 조건에 따라 금액이 변경될 수 있습니다.</p></section>
 <script>
   'use strict';
+  const APP_VERSION='2026.11.25-R3';
+  // 로딩 및 스크립트 오류를 눈에 보이게 표시합니다.
+  window.addEventListener('error', function (ev) {
+    const el=document.getElementById('calculator-status');
+    if(el) {el.textContent='⚠ 계산기 오류: 새로고침 후에도 계속되면 고객센터로 문의해 주세요. ('+APP_VERSION+')';el.classList.add('is-error');}
+  });
   // 기존 html/index.html의 소재·두께 목록 및 FuncPayment_Version_2 가격 계수를 보존했습니다.
   // 이전 요청에 따라 실제 제작 수량 1개당 1,000원 추가 비용을 유지합니다.
   const THICKNESS = {
@@ -161,6 +209,37 @@
     const amount=Math.ceil((platePrice+cutPrice+additionalPrice)/100)*100;
     return {amount, naver:amount/100, unit:Math.ceil(amount/quantity),platePrice,cutPrice,additionalPrice};
   }
+  let lastAddedSignature='';
+  function currentInputs(){
+    const material=$('material').value,thickness=Number($('thickness').value);
+    const width=Number($('width').value),height=Number($('height').value),quantity=Number($('quantity').value);
+    const valid=material in THICKNESS && THICKNESS[material].includes(thickness) &&
+      [width,height,quantity].every(v=>Number.isSafeInteger(v)&&v>0) && quantity<=100000;
+    return {valid,material,thickness,width,height,quantity,
+      signature:[material,thickness,width,height,quantity].join('|')};
+  }
+  function updateLivePreview(){
+    const input=currentInputs();
+    if(!input.valid){
+      $('draft-caption').textContent='재질·두께·가로·세로·수량을 입력해 주세요.';
+      $('draft-money').textContent='—';
+      $('draft-hint').textContent='입력 완료 시 예상 금액이 자동으로 표시됩니다.';
+      $('draft-hint').classList.remove('is-complete');
+      return;
+    }
+    const data=calculate(input.material,input.thickness,input.width,input.height,input.quantity);
+    $('draft-caption').textContent=`${input.material} ${input.thickness}T · ${won(input.width)} × ${won(input.height)}mm · ${won(input.quantity)}개 | 네이버 수량 ${won(data.naver)}개`;
+    $('draft-money').textContent=`${won(data.amount)}원`;
+    const added=input.signature===lastAddedSignature;
+    $('draft-hint').textContent=added?'✓ 마지막으로 입력한 규격이 견적서에 추가되었습니다. 아래 목록과 합계를 확인하세요.':'이 금액은 미리보기입니다. 견적서에 반영하려면 ‘견적 계산 후 항목 추가’를 눌러 주세요.';
+    $('draft-hint').classList.toggle('is-complete',added);
+  }
+  function onFormInput(){
+    $('form-error').textContent='';
+    $('form-success').textContent='';
+    $('added-alert').classList.remove('is-visible');
+    updateLivePreview();
+  }
   function populateThickness(){
     const type=$('material').value, sel=$('thickness');
     sel.replaceChildren();
@@ -175,7 +254,8 @@
     return n;
   }
   function render(){
-    const tbody=$('quote-rows'); tbody.replaceChildren();$('mobile-quote-list').replaceChildren();
+    const tbody=$('quote-rows');tbody.textContent='';$('mobile-quote-list').textContent='';
+    $('added-count').textContent=items.length+'건';
     $('empty-state').hidden=items.length>0;
     const total=items.reduce((a,b)=>a+b.amount,0);
     const count=items.reduce((a,b)=>a+b.quantity,0);
@@ -187,11 +267,11 @@
       const item=items[i], tr=document.createElement('tr');
       const cells=[String(i+1),`${item.material} ${item.thickness}T`,`${won(item.width)} × ${won(item.height)}`,`${won(item.quantity)}개`,`${won(item.unit)}원`,`${won(item.amount)}원`,won(item.naver)];
       cells.forEach((str,j)=>{const td=tr.insertCell();td.textContent=str;if(j===1) td.className='t-strong';if(j===5)td.className='monetary';});
-      const td=tr.insertCell(), button=document.createElement('button'); button.type='button';button.className='remove';button.textContent='삭제';button.setAttribute('aria-label',`${i+1}번 견적 항목 삭제`);button.addEventListener('click',()=>{items.splice(i,1);render();});td.append(button);tbody.append(tr);
+      const td=tr.insertCell(), button=document.createElement('button'); button.type='button';button.className='remove';button.textContent='삭제';button.setAttribute('aria-label',`${i+1}번 견적 항목 삭제`);button.addEventListener('click',()=>{items.splice(i,1);lastAddedSignature='';render();updateLivePreview();});td.append(button);tbody.append(tr);
       const card=document.createElement('div');card.className='mobile-quote';
       const top=document.createElement('div');top.className='mobile-quote-title';
       const cardTitle=document.createElement('strong');cardTitle.textContent=`${i+1}. ${item.material} ${item.thickness}T`;
-      const cardRemove=button.cloneNode(true);cardRemove.addEventListener('click',()=>{items.splice(i,1);render();});
+      const cardRemove=button.cloneNode(true);cardRemove.addEventListener('click',()=>{items.splice(i,1);lastAddedSignature='';render();updateLivePreview();});
       top.append(cardTitle,cardRemove);card.append(top);
       const grid=document.createElement('div');grid.className='mobile-quote-grid';
       [['규격(mm)',`${won(item.width)} × ${won(item.height)}`],['제작 수량',`${won(item.quantity)}개`],['예상 금액',`${won(item.amount)}원`],['네이버 주문 수량',`${won(item.naver)}개`]].forEach(([key,value],k)=>{
@@ -212,16 +292,25 @@
     if(!items.length){alert('먼저 견적을 계산해 주세요.');return;}
     // 외부 라이브러리 없이 견적서를 이미지로 저장하여 GitHub Pages에서 그대로 사용할 수 있습니다.
     const W=1200,pad=66,cols=[66,128,324,500,626,760,950,1134];
-    const height=410+items.length*62+100;
+    const y0=376;
+    const height=y0+57+items.length*62+180;
     const canvas=document.createElement('canvas');canvas.width=W;canvas.height=height;
     const ctx=canvas.getContext('2d');
     ctx.fillStyle='#fff';ctx.fillRect(0,0,W,height);
     ctx.fillStyle='#0b2b54';ctx.fillRect(0,0,W,18);
-    ctx.fillStyle='#0b2b54';ctx.font='bold 37px "Malgun Gothic",sans-serif';ctx.fillText('레이저 마켓 | 사각 절단 예상 견적서',pad,98);
-    ctx.font='21px "Malgun Gothic",sans-serif';ctx.fillStyle='#4e657e';
-    ctx.fillText('LASER MARKET  ·  063-291-3000  ·  lasermarket11@naver.com',pad,148);
-    ctx.fillText(`작성일 : ${new Date().toLocaleString('ko-KR')}`,pad,183);
-    const y0=220;
+    ctx.fillStyle='#0b2b54';ctx.font='bold 37px "Malgun Gothic",sans-serif';ctx.fillText('레이저 마켓 | 사각 절단 예상 견적서',pad,90);
+    // 공급자 정보는 화면 견적서와 동일하게 PNG 저장에도 포함됩니다.
+    ctx.fillStyle='#f0f6ff';ctx.fillRect(pad,115,W-2*pad,201);
+    ctx.fillStyle='#dee9f7';ctx.fillRect(pad,115,156,201);
+    ctx.fillStyle='#163e74';ctx.font='bold 26px "Malgun Gothic",sans-serif';ctx.fillText('공급자',pad+38,222);
+    ctx.fillStyle='#304864';ctx.font='21px "Malgun Gothic",sans-serif';
+    const sx=pad+180;
+    ctx.fillText('등록번호 : 533-06-01928',sx,157);
+    ctx.fillText('상호 : 레이저 마켓    성명 : 조민영',sx,199);
+    ctx.fillText('T.(063) 291 - 3000    F:214 - 3000',sx,241);
+    ctx.fillText('E-mail : lasermarket11@gmail.com',sx,283);
+    ctx.fillStyle='#4e657e';ctx.font='18px "Malgun Gothic",sans-serif';
+    ctx.fillText(`작성일 : ${new Date().toLocaleString('ko-KR')}`,pad,354);
     ctx.fillStyle='#edf5ff';ctx.fillRect(pad,y0,W-2*pad,57);
     const heads=['No','재질 / 두께','규격(mm)','수량','단가(원)','금액(원)','네이버 수량'];
     ctx.textBaseline='middle';ctx.fillStyle='#244267';ctx.font='bold 20px "Malgun Gothic",sans-serif';
@@ -240,11 +329,15 @@
     ctx.fillStyle='#6c7b8e';ctx.font='17px "Malgun Gothic",sans-serif';ctx.fillText('※ 사각 절단 예상금액입니다. 별도 가공 및 배송비 등은 실제 견적과 다를 수 있습니다.',pad+8,yTotal+112);
     const a=document.createElement('a');a.href=canvas.toDataURL('image/png');a.download=`레이저마켓_셀프견적_${new Date().toISOString().slice(0,10)}.png`;document.body.append(a);a.click();a.remove();
   }
-  $('material').addEventListener('change',populateThickness);
-  $('qty-minus').addEventListener('click',()=>{$('quantity').value=Math.max(1,(parseInt($('quantity').value,10)||1)-1);});
-  $('qty-plus').addEventListener('click',()=>{$('quantity').value=Math.min(100000,(parseInt($('quantity').value,10)||0)+1);});
-  $('estimate-form').addEventListener('submit',event=>{
-    event.preventDefault(); $('form-error').textContent='';
+  $('material').addEventListener('change',()=>{populateThickness();onFormInput();});
+  ['thickness','width','height','quantity'].forEach(id=>{ $(id).addEventListener('input',onFormInput); $(id).addEventListener('change',onFormInput); });
+  $('qty-minus').addEventListener('click',()=>{$('quantity').value=Math.max(1,(parseInt($('quantity').value,10)||1)-1);onFormInput();});
+  $('qty-plus').addEventListener('click',()=>{$('quantity').value=Math.min(100000,(parseInt($('quantity').value,10)||0)+1);onFormInput();});
+  // 버튼 클릭을 직접 연결해 일부 브라우저/모바일의 form submit 차이를 방지합니다.
+  function addQuoteItem(event){
+    if(event&&event.preventDefault) event.preventDefault();
+    $('form-error').textContent='';
+    $('form-success').textContent='';
     try{
       const material=$('material').value, thickness=Number($('thickness').value);
       if(!material||!THICKNESS[material]) throw Error('재질을 선택해 주세요.');
@@ -252,14 +345,41 @@
       const width=inputNumber('width'),height=inputNumber('height'),quantity=inputNumber('quantity');
       if(quantity>100000) throw Error('수량은 100,000개 이하로 입력해 주세요.');
       const cal=calculate(material,thickness,width,height,quantity);
-      items.push({id:nextId++,material,thickness,width,height,quantity,...cal});
-      render();
-      if(window.matchMedia('(max-width:900px)').matches){$('results').scrollIntoView({behavior:'smooth',block:'start'});}
-    }catch(e){$('form-error').textContent=e.message;}
-  });
+      if(!Number.isFinite(cal.amount)||cal.amount<=0) throw Error('계산 결과를 확인할 수 없습니다. 입력 값을 확인해 주세요.');
+      const data={id:nextId++,material,thickness,width,height,quantity,...cal};
+      items.push(data);
+      try{render();}catch(renderError){items.pop();throw renderError;}
+      // 화면의 데이터 행도 실제로 추가됐는지 확인합니다.
+      if($('quote-rows').rows.length!==items.length){throw Error('견적서 목록을 표시하지 못했습니다. 페이지를 새로고침해 주세요.');}
+      lastAddedSignature=[material,thickness,width,height,quantity].join('|');
+      updateLivePreview();
+      $('form-success').textContent='✓ '+items.length+'건의 견적이 등록되었습니다.';
+      $('calculator-status').textContent='✓ 계산기 정상 실행 중 · 버전 '+APP_VERSION;
+      $('calculator-status').classList.remove('is-error');
+      $('calculator-status').classList.add('is-ready');
+      const msg=`✓ ${material} ${thickness}T / ${won(width)}×${won(height)}mm / ${won(quantity)}개가 추가되었습니다. (총 ${items.length}건 · ${won(items.reduce((sum,item)=>sum+item.amount,0))}원)`;
+      $('added-alert').textContent=msg;
+      $('added-alert').classList.add('is-visible');
+      if(window.matchMedia&&window.matchMedia('(max-width:900px)').matches){
+        $('results').scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    }catch(e){
+      const message=e&&e.message?e.message:'견적서 항목을 추가하는 중 오류가 발생했습니다.';
+      $('form-error').textContent='⚠ '+message;
+      $('calculator-status').textContent='계산 중 오류가 발생했습니다 · '+APP_VERSION;
+      $('calculator-status').classList.add('is-error');
+      $('added-alert').classList.remove('is-visible');
+      console.error('레이저 마켓 견적서 추가 오류:',e);
+    }
+  }
+  $('add-quote-btn').addEventListener('click',addQuoteItem);
+  $('estimate-form').addEventListener('submit',addQuoteItem);
   $('download-btn').addEventListener('click',downloadImage);
   $('print-btn').addEventListener('click',()=>{if(!items.length){alert('먼저 견적을 계산해 주세요.');return;}updatePrint();window.print();});
   render();
+  updateLivePreview();
+  $('calculator-status').textContent='✓ 계산기 정상 실행 중 · 버전 '+APP_VERSION;
+  $('calculator-status').classList.add('is-ready');
 </script>
 </body>
 </html>
